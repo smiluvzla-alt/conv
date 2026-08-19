@@ -1,11 +1,41 @@
 {
   "sections": {
-    "funnel-principal": {
-      "type": "smilu-sales-funnel",
+    "home-hero": {
+      "type": "smilu-home-hero",
+      "settings": {}
+    },
+    "home-social": {
+      "type": "smilu-home-social",
+      "settings": {}
+    },
+    "home-pivot": {
+      "type": "smilu-home-pivot",
+      "settings": {}
+    },
+    "home-pitch": {
+      "type": "smilu-home-pitch",
+      "settings": {}
+    },
+    "home-connection": {
+      "type": "smilu-home-connection",
+      "settings": {}
+    },
+    "home-ugc": {
+      "type": "smilu-home-ugc",
+      "settings": {}
+    },
+    "home-closing": {
+      "type": "smilu-home-closing",
       "settings": {}
     }
   },
   "order": [
-    "funnel-principal"
+    "home-hero",
+    "home-social",
+    "home-pivot",
+    "home-pitch",
+    "home-connection",
+    "home-ugc",
+    "home-closing"
   ]
 }

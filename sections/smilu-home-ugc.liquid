@@ -1,0 +1,141 @@
+{% schema %}
+{
+  "name": "Smilu Home - Wall of Love",
+  "tag": "section",
+  "class": "smilu-home-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titular de Sección",
+      "default": "El Veredicto Final."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smilu Home - Wall of Love"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .smilu-ugc-wrapper {
+    background-color: #000000;
+    padding: 100px 20px;
+    font-family: var(--font-family, -apple-system, sans-serif);
+  }
+  .smilu-ugc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .smilu-ugc-heading {
+    text-align: center;
+    font-weight: 900 !important;
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+    color: #FFFFFF !important;
+    margin-bottom: 60px;
+    letter-spacing: -0.03em !important;
+  }
+  .smilu-ugc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .smilu-ugc-card {
+    background: #0A0A0C;
+    border: 1px solid #1A1A1A;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .smilu-ugc-stars {
+    display: flex;
+    gap: 4px;
+    color: #00C97B;
+    font-size: 16px;
+  }
+  .smilu-ugc-quote {
+    font-weight: 500 !important;
+    font-size: 1.1rem !important;
+    color: #FFFFFF !important;
+    line-height: 1.5 !important;
+    margin: 0;
+  }
+  .smilu-ugc-author {
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    color: #777777 !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+  }
+  .smilu-ugc-verified {
+    color: #00C97B;
+  }
+
+  @media (max-width: 900px) {
+    .smilu-ugc-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .smilu-ugc-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="smilu-ugc-wrapper">
+  <div class="smilu-ugc-container">
+    <h2 class="smilu-ugc-heading">{{ section.settings.heading }}</h2>
+    
+    <div class="smilu-ugc-grid">
+      <!-- Card 1 -->
+      <div class="smilu-ugc-card">
+        <div class="smilu-ugc-stars">★★★★★</div>
+        <p class="smilu-ugc-quote">"Se acabó la paranoia del mal aliento matutino. Es la primera vez que siento que mi boca está realmente limpia."</p>
+        <p class="smilu-ugc-author">Daniela F. <span class="smilu-ugc-verified">✔ Verificado</span></p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="smilu-ugc-card">
+        <div class="smilu-ugc-stars">★★★★★</div>
+        <p class="smilu-ugc-quote">"Siento que antes solo me acariciaba los dientes con los cepillos normales. Ahora sí están limpios, resbalosos como cristal."</p>
+        <p class="smilu-ugc-author">Martín O. <span class="smilu-ugc-verified">✔ Verificado</span></p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="smilu-ugc-card">
+        <div class="smilu-ugc-stars">★★★★★</div>
+        <p class="smilu-ugc-quote">"Compré uno de 300 dólares y se inundó por dentro a los 4 meses. Este de Smilu tiene un sellado impecable y cuesta una fracción."</p>
+        <p class="smilu-ugc-author">Rodrigo S. <span class="smilu-ugc-verified">✔ Verificado</span></p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="smilu-ugc-card">
+        <div class="smilu-ugc-stars">★★★★★</div>
+        <p class="smilu-ugc-quote">"Me devolvió la confianza para hablar de cerca. Literalmente un salvavidas para mis reuniones en la oficina."</p>
+        <p class="smilu-ugc-author">Camila A. <span class="smilu-ugc-verified">✔ Verificado</span></p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="smilu-ugc-card">
+        <div class="smilu-ugc-stars">★★★★★</div>
+        <p class="smilu-ugc-quote">"Cero arcadas con el raspador. Su diseño no lastima la lengua ni me hace sangrar como los de metal barato."</p>
+        <p class="smilu-ugc-author">Tomás V. <span class="smilu-ugc-verified">✔ Verificado</span></p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="smilu-ugc-card">
+        <div class="smilu-ugc-stars">★★★★★</div>
+        <p class="smilu-ugc-quote">"El diseño es hermoso. Mi baño ya no se ve invadido por plástico barato y cables feos. Vale cada centavo."</p>
+        <p class="smilu-ugc-author">Paula M. <span class="smilu-ugc-verified">✔ Verificado</span></p>
+      </div>
+    </div>
+  </div>
+</div>

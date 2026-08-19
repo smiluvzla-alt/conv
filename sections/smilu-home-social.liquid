@@ -1,0 +1,244 @@
+{% schema %}
+{
+  "name": "Smilu Home - Social Proof",
+  "tag": "section",
+  "class": "smilu-home-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "score_text",
+      "label": "Puntuación Textual",
+      "default": "Excelente 4.9/5"
+    },
+    {
+      "type": "text",
+      "id": "based_on_text",
+      "label": "Texto Basado en",
+      "default": "basado en +15,000 ventas en Chile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smilu Home - Social Proof"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .wb-trustpilot-section {
+    padding: 30px 0;
+    background-color: #030303; 
+    font-family: var(--font-family, 'Inter', sans-serif);
+    overflow: hidden;
+  }
+  
+  .wb-tp-header-horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+  .wb-tp-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .wb-tp-logo {
+    font-weight: 800;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    color: #FFFFFF;
+    white-space: nowrap;
+  }
+  .wb-tp-logo-star {
+    color: #00b67a;
+    font-size: 24px;
+  }
+  .wb-stars-main {
+    display: flex;
+    gap: 2px;
+    margin: 0;
+  }
+  .wb-star-main-icon {
+    width: 26px;
+    height: 26px;
+    background-color: #00b67a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wb-star-main-icon svg {
+    fill: white;
+    width: 14px;
+    height: 14px;
+  }
+  .wb-tp-score {
+    font-size: 16px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0;
+  }
+  .wb-tp-bottom-row p {
+    font-size: 13px;
+    color: #A0A0A0;
+    margin: 0;
+  }
+
+  .wb-marquee-wrapper {
+    display: flex;
+    overflow: hidden;
+    gap: 15px;
+    padding: 10px 0;
+  }
+  
+  .wb-marquee-content {
+    flex-shrink: 0;
+    display: flex;
+    gap: 15px;
+    min-width: 100%;
+    animation: scroll-left 50s linear infinite;
+  }
+
+  .wb-marquee-wrapper:hover .wb-marquee-content {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - 15px)); }
+  }
+
+  .wb-review-card {
+    background: #0A0A0A;
+    width: 280px;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-top: 3px solid #00b67a;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+    white-space: normal;
+  }
+  
+  .wb-review-stars {
+    display: flex;
+    gap: 2px;
+  }
+  .wb-review-stars .wb-star-small {
+    width: 14px;
+    height: 14px;
+    background-color: #00b67a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wb-review-stars .wb-star-small svg {
+    fill: white;
+    width: 8px;
+    height: 8px;
+  }
+  
+  .wb-review-title {
+    font-weight: 800;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .wb-review-body {
+    font-size: 13px;
+    color: #CCCCCC;
+    line-height: 1.4;
+    margin: 0;
+    flex-grow: 1;
+  }
+  
+  .wb-review-author {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  
+  .wb-author-name {
+    font-weight: 600;
+    font-size: 12px;
+    color: #FFFFFF;
+  }
+  
+  .wb-verified-tag {
+    font-size: 11px;
+    color: #00b67a;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .wb-verified-tag svg {
+    fill: #00b67a;
+    width: 10px;
+    height: 10px;
+  }
+</style>
+
+{% assign reviews_string = "María G.|Adiós mal aliento|El primer cepillo que de verdad me hace sentir la boca limpia todo el día. Ya no tengo paranoia de hablar de cerca.||Carlos R.|Potencia increíble|Se siente como salir del odontólogo. La batería dura muchísimo y el diseño es espectacular.||Valentina M.|Vale cada peso|Cansada de comprar cepillos de marca que se dañan a los 3 meses. Este se siente premium de verdad.||Roberto T.|Estatus en mi baño|El diseño es increíble, cero plástico barato. Lo mejor es que mi aliento mejoró al 100%.||Ana P.|Resultados inmediatos|Desde el primer uso notas la diferencia, los dientes quedan como cristal. No lo cambio por nada.||Fernando L.|Recomendadísimo|La vibración sónica es otro nivel. Mi odontólogo me felicitó en la última limpieza." %}
+{% assign reviews = reviews_string | split: "||" %}
+
+<div class="wb-trustpilot-section">
+  <div class="wb-tp-header-horizontal">
+    <div class="wb-tp-top-row">
+      <h3 class="wb-tp-logo"><span class="wb-tp-logo-star">★</span> Trustpilot</h3>
+      <div class="wb-stars-main">
+        {% for i in (1..5) %}
+        <div class="wb-star-main-icon">
+          <svg viewBox="0 0 512 512"><path d="M256 38.013l73.468 148.853 164.28 23.87-118.874 115.877 28.064 163.63-146.938-77.245-146.938 77.245 28.064-163.63L18.252 210.736l164.28-23.87L256 38.013z"/></svg>
+        </div>
+        {% endfor %}
+      </div>
+      <p class="wb-tp-score">{{ section.settings.score_text }}</p>
+    </div>
+    <div class="wb-tp-bottom-row">
+      <p>{{ section.settings.based_on_text }}</p>
+    </div>
+  </div>
+
+  <div class="wb-marquee-wrapper">
+    {% for track in (1..2) %}
+    <div class="wb-marquee-content">
+      {% for review in reviews %}
+        {% if review != blank %}
+          {% assign parts = review | split: "|" %}
+          <div class="wb-review-card">
+            <div class="wb-review-stars">
+              {% for i in (1..5) %}
+              <div class="wb-star-small">
+                <svg viewBox="0 0 512 512"><path d="M256 38.013l73.468 148.853 164.28 23.87-118.874 115.877 28.064 163.63-146.938-77.245-146.938 77.245 28.064-163.63L18.252 210.736l164.28-23.87L256 38.013z"/></svg>
+              </div>
+              {% endfor %}
+            </div>
+            <h4 class="wb-review-title">{{ parts[1] }}</h4>
+            <p class="wb-review-body">"{{ parts[2] }}"</p>
+            <div class="wb-review-author">
+              <span class="wb-author-name">{{ parts[0] }}</span>
+              <span class="wb-verified-tag">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Comprador verificado
+              </span>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
