@@ -26,7 +26,7 @@
 
 <style>
   .smilu-pitch-wrapper {
-    background-color: #030303;
+    background-color: var(--smilu-bg-light, #FFFFFF);
     padding: 100px 20px;
     font-family: var(--font-family, -apple-system, sans-serif);
   }
@@ -38,7 +38,7 @@
     text-align: center;
     font-weight: 900 !important;
     font-size: clamp(2rem, 4vw, 3rem) !important;
-    color: #FFFFFF !important;
+    color: var(--smilu-text-dark, #050505) !important;
     margin-bottom: 60px;
     letter-spacing: -0.03em !important;
   }
@@ -48,22 +48,24 @@
     gap: 30px;
   }
   .smilu-pitch-card {
-    background: #0A0A0A;
-    border: 1px solid #1A1A1A;
+    background: var(--smilu-gray-light, #F8FAFC);
+    border: 1px solid rgba(0,0,0,0.03);
     border-radius: 20px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
   }
   .smilu-pitch-card:hover {
     transform: translateY(-8px);
-    border-color: #333333;
+    border-color: rgba(0,0,0,0.05);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
   }
   .smilu-pitch-img-wrapper {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background: #111111;
+    background: #E2E8F0;
     position: relative;
     overflow: hidden;
   }
@@ -85,7 +87,7 @@
   .smilu-pitch-title {
     font-weight: 800 !important;
     font-size: 1.3rem !important;
-    color: #FFFFFF !important;
+    color: var(--smilu-text-dark, #050505) !important;
     margin-bottom: 8px;
     text-decoration: none;
   }
@@ -96,7 +98,7 @@
     margin-bottom: 20px;
   }
   .smilu-pitch-price strike {
-    color: #555555 !important;
+    color: #64748B !important;
     font-size: 0.9rem !important;
     margin-left: 8px;
   }
@@ -105,8 +107,8 @@
   }
   .smilu-pitch-btn {
     width: 100%;
-    background: #FFFFFF !important;
-    color: #000000 !important;
+    background: #050505 !important;
+    color: #FFFFFF !important;
     font-weight: 800 !important;
     font-size: 1.1rem !important;
     padding: 14px;
@@ -117,12 +119,12 @@
     text-align: center;
   }
   .smilu-pitch-btn:hover {
-    background: #E2E8F0 !important;
+    background: #1E293B !important;
   }
 
   /* Placeholder Styling */
   .smilu-placeholder-item {
-    background: #111; display: flex; align-items: center; justify-content: center; height: 100%; color: #555; font-size: 3rem;
+    background: #E2E8F0; display: flex; align-items: center; justify-content: center; height: 100%; color: #94A3B8; font-size: 3rem;
   }
 </style>
 

@@ -21,7 +21,7 @@
 
 <style>
   .smilu-closing-wrapper {
-    background-color: #030303;
+    background-color: var(--smilu-bg-light, #FFFFFF);
     padding: 100px 20px;
     font-family: var(--font-family, -apple-system, sans-serif);
   }
@@ -36,7 +36,7 @@
     text-align: center;
     font-weight: 900 !important;
     font-size: clamp(2rem, 4vw, 3rem) !important;
-    color: #FFFFFF !important;
+    color: var(--smilu-text-dark, #050505) !important;
     margin-bottom: 60px;
     letter-spacing: -0.03em !important;
   }
@@ -48,8 +48,8 @@
     margin-bottom: 60px;
   }
   .smilu-faq-item {
-    background: #0A0A0A;
-    border: 1px solid #1A1A1A;
+    background: var(--smilu-gray-light, #F8FAFC);
+    border: 1px solid rgba(0,0,0,0.03);
     border-radius: 12px;
     overflow: hidden;
   }
@@ -61,7 +61,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #FFFFFF;
+    color: var(--smilu-text-dark, #050505);
     font-weight: 700;
     font-size: 1.1rem;
     cursor: pointer;
@@ -80,7 +80,7 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
-    color: #A0A0A0;
+    color: #64748B;
     line-height: 1.6;
   }
   .smilu-faq-item.active .smilu-faq-answer {
@@ -102,7 +102,7 @@
     border-radius: 12px;
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 20px rgba(0, 201, 123, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
     border: none;
     cursor: pointer;
     width: 100%;
@@ -110,7 +110,7 @@
   }
   .smilu-final-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 201, 123, 0.6);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.6);
   }
 </style>
 

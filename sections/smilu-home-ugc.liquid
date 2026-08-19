@@ -21,7 +21,7 @@
 
 <style>
   .smilu-ugc-wrapper {
-    background-color: var(--smilu-bg-dark, #0A0A0C);
+    background-color: var(--smilu-bg-light, #FFFFFF);
     padding: 100px 20px;
     font-family: var(--font-family, -apple-system, sans-serif);
   }
@@ -33,7 +33,7 @@
     text-align: center;
     font-weight: 900 !important;
     font-size: clamp(2rem, 4vw, 3rem) !important;
-    color: #FFFFFF !important;
+    color: var(--smilu-text-dark, #050505) !important;
     margin-bottom: 60px;
     letter-spacing: -0.03em !important;
   }
@@ -44,8 +44,8 @@
     align-items: start;
   }
   .smilu-ugc-card {
-    background: #0A0A0C;
-    border: 1px solid #1A1A1A;
+    background: var(--smilu-gray-light, #F8FAFC);
+    border: 1px solid rgba(0,0,0,0.03);
     border-radius: 12px;
     padding: 24px;
     display: flex;
@@ -61,14 +61,14 @@
   .smilu-ugc-quote {
     font-weight: 500 !important;
     font-size: 1.1rem !important;
-    color: #FFFFFF !important;
+    color: var(--smilu-text-dark, #050505) !important;
     line-height: 1.5 !important;
     margin: 0;
   }
   .smilu-ugc-author {
     font-weight: 700 !important;
     font-size: 0.9rem !important;
-    color: #777777 !important;
+    color: #64748B !important;
     display: flex;
     align-items: center;
     gap: 8px;
