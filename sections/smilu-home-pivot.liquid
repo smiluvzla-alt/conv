@@ -138,5 +138,26 @@
         <p class="smilu-pivot-desc">Acabado boutique de precisión. Porque tu salud, tu confianza y tu baño no merecen plástico barato.</p>
       </div>
     </div>
-  </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 3D Parallax Tilt Effect (Teenage Engineering Style)
+    const cards = document.querySelectorAll('.smilu-pivot-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const tiltX = (y - 0.5) * -12; // max 12deg
+        const tiltY = (x - 0.5) * 12;
+        card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+        card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        card.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
+      });
+    });
+  });
+</script>  </div>
 </div>

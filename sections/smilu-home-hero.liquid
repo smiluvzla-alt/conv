@@ -100,7 +100,6 @@
     max-width: 400px;
   }
   .smilu-hero-cta:hover {
-    transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 212, 255, 0.6);
   }
   .smilu-cta-main {
@@ -148,3 +147,33 @@
     </a>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Text Mask Reveal Effect (Awwwards Style)
+    const h1 = document.querySelector('.smilu-hero-h1');
+    if (h1) {
+      h1.style.opacity = '0';
+      h1.style.transform = 'translateY(40px)';
+      h1.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+      setTimeout(() => {
+        h1.style.opacity = '1';
+        h1.style.transform = 'translateY(0)';
+      }, 100);
+    }
+
+    // 2. Magnetic Pull Button
+    const btn = document.querySelector('.smilu-hero-cta');
+    if (btn) {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) * 0.25;
+        const y = (e.clientY - rect.top - rect.height / 2) * 0.25;
+        btn.style.transform = `translate(${x}px, ${y}px) scale(1.02)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0px, 0px) scale(1)';
+      });
+    }
+  });
+</script>
