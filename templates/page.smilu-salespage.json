@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "funnel-principal": {
+      "type": "smilu-sales-funnel",
+      "settings": {}
+    }
+  },
+  "order": [
+    "funnel-principal"
+  ]
+}

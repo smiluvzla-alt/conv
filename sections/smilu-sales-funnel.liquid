@@ -1,0 +1,21 @@
+{% render 'smilu-salespage', target_product: section.settings.target_product %}
+
+{% schema %}
+{
+  "name": "Smilu $1M Sales Funnel",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "target_product",
+      "label": "Producto Vinculado",
+      "info": "Selecciona el producto maestro para que el carrito funcione en esta landing."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smilu Sales Funnel"
+    }
+  ]
+}
+{% endschema %}

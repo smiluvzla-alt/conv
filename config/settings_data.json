@@ -1,0 +1,242 @@
+{
+  "current": {
+    "jQuery": true,
+    "sections": {
+      "top-info-bar": {
+        "type": "top-info-bar",
+        "blocks": {
+          "df96f44f-b579-4ba2-a13e-cd2b3d346d96": {
+            "type": "social",
+            "settings": {
+              "enabled": true,
+              "enabledMobile": true,
+              "align": "auto"
+            }
+          },
+          "a3752054-0035-4709-aa87-74ca74f4250b": {
+            "type": "barTextMarquee",
+            "settings": {
+              "enabled": true,
+              "enabledMobile": true,
+              "align": "auto",
+              "messages": "<p><strong>Envío Gratis a todo el país 🚀<\/strong><\/p>"
+            }
+          },
+          "ea7c1653-fbe0-4a55-904f-79a3118183d9": {
+            "type": "linkList",
+            "settings": {
+              "enabled": true,
+              "enabledMobile": true,
+              "align": "auto",
+              "links": ""
+            }
+          }
+        },
+        "block_order": [
+          "df96f44f-b579-4ba2-a13e-cd2b3d346d96",
+          "a3752054-0035-4709-aa87-74ca74f4250b",
+          "ea7c1653-fbe0-4a55-904f-79a3118183d9"
+        ],
+        "settings": {
+          "enabled": true,
+          "enabledMobile": false,
+          "layout": "default",
+          "height": 30,
+          "fontSize": "font__size--small",
+          "colorCombo": "customCombo",
+          "customFillColor": "#e8e8e8",
+          "customContentColor": "#3d3d3d"
+        }
+      },
+      "info-badges": {
+        "type": "info-badges",
+        "blocks": {
+          "fd5af8ef-fb9f-490a-b4da-4144a48a519d": {
+            "type": "infoBadge",
+            "settings": {
+              "icon": "shopping-bag",
+              "heading": "This is awesome!",
+              "subheading": "This is even more info about how awesome this is!"
+            }
+          },
+          "8f34a1fd-57f1-476d-b533-de18777ba59d": {
+            "type": "infoBadge",
+            "settings": {
+              "icon": "shopping-cart",
+              "heading": "This is awesome!",
+              "subheading": "This is even more info about how awesome this is!"
+            }
+          },
+          "8f34a1fd-b533-de18777ba59d": {
+            "type": "infoBadge",
+            "settings": {
+              "icon": "shopping-cart",
+              "heading": "This is awesome!",
+              "subheading": "There is no way it can get any more awesome?!"
+            }
+          }
+        },
+        "block_order": [
+          "fd5af8ef-fb9f-490a-b4da-4144a48a519d",
+          "8f34a1fd-57f1-476d-b533-de18777ba59d",
+          "8f34a1fd-b533-de18777ba59d"
+        ],
+        "settings": {
+          "enabled": true,
+          "displayFor": "display--both",
+          "layout": "default",
+          "nomargin": true,
+          "scopedCSS": "",
+          "height": 0,
+          "padding": 0,
+          "lineMargin": 12,
+          "backgroundColor": "rgba(0,0,0,0)",
+          "backgroundPosition": "middle",
+          "backgroundFilter": "none",
+          "backdropIntensity": 50,
+          "parallax": false,
+          "backgroundPattern": false,
+          "overlayOpacity": 0,
+          "overlayColor": "#000000",
+          "contentColor": "rgba(0,0,0,0)",
+          "horizontalAlignment": "end",
+          "verticalAlignment": "middle",
+          "iconPosition": "icon--left"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "0e188e08-01bf-4244-8aa3-997ce12eca05": {
+            "type": "footerText",
+            "settings": {
+              "width": "3",
+              "horizontalAlignment": "start",
+              "verticalAlignment": "middle",
+              "heading": "Booster 6 revolution",
+              "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements or welcome customers to your store.<\/p>"
+            }
+          },
+          "79c988f6-1297-4df0-9e07-f6f74537046f": {
+            "type": "footerLinks",
+            "settings": {
+              "width": "3",
+              "horizontalAlignment": "start",
+              "verticalAlignment": "middle",
+              "heading": "Links",
+              "links": ""
+            }
+          },
+          "cfabfbdb-82fa-47c0-b6c4-af5438cd404d": {
+            "type": "footerLinks",
+            "settings": {
+              "width": "3",
+              "horizontalAlignment": "start",
+              "verticalAlignment": "middle",
+              "heading": "More links",
+              "links": ""
+            }
+          },
+          "06e04fbf-1646-47c1-849b-5f2b943d143a": {
+            "type": "footerSocial",
+            "settings": {
+              "width": "auto",
+              "horizontalAlignment": "center",
+              "verticalAlignment": "middle",
+              "heading": ""
+            }
+          }
+        },
+        "block_order": [
+          "0e188e08-01bf-4244-8aa3-997ce12eca05",
+          "79c988f6-1297-4df0-9e07-f6f74537046f",
+          "cfabfbdb-82fa-47c0-b6c4-af5438cd404d",
+          "06e04fbf-1646-47c1-849b-5f2b943d143a"
+        ],
+        "settings": {
+          "layout": "default",
+          "fillColor": "#f8f8f8",
+          "contentColor": "#373737",
+          "spacing": 16
+        }
+      },
+      "subfooter": {
+        "type": "subfooter",
+        "blocks": {
+          "text-01": {
+            "type": "footerText",
+            "settings": {
+              "width": "auto",
+              "horizontalAlignment": "center",
+              "verticalAlignment": "middle",
+              "heading": "",
+              "text": "<p>Designed and developed by <a target=\"_blank\" href=\"https:\/\/boostertheme.com\/\">BoosterTheme™<\/a><\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "text-01"
+        ],
+        "settings": {
+          "layout": "default",
+          "fillColor": "#000000",
+          "contentColor": "#ffffff",
+          "spacing": 0
+        }
+      },
+      "header--default": {
+        "type": "header--default",
+        "settings": {
+          "layout": "default",
+          "minHeight": 75,
+          "borderRadius": 0,
+          "shadow": false,
+          "menuLinks": "",
+          "megamenu": true,
+          "logoWidth": 240,
+          "logoHeight": 0,
+          "sticky": true,
+          "contentMargin": 0,
+          "desktopCart": true,
+          "headerBg": "rgba(0,0,0,0)",
+          "linkColor": "#727272",
+          "accentColor": "#000000",
+          "hoverStyle": "underline",
+          "tagBgColor": "#000",
+          "tagTextColor": "#FFF",
+          "transparent": false,
+          "linkColorT": "#FFF",
+          "accentColorT": "#EFEFEF",
+          "fontSize": "base",
+          "customFont": false,
+          "fontFamily": "work_sans_n6",
+          "cartIcon": "shopping-basket",
+          "mobileLogoPosition": "center",
+          "mobileCart": true
+        }
+      },
+      "bottom-info-bar": {
+        "type": "bottom-info-bar",
+        "settings": {
+          "enabled": false,
+          "enabledMobile": false,
+          "layout": "default",
+          "height": 30,
+          "fontSize": "font__size--small",
+          "colorCombo": "primaryCombo",
+          "customFillColor": "rgba(0,0,0,0)",
+          "customContentColor": "rgba(0,0,0,0)"
+        }
+      },
+      "api__upsell": {
+        "type": "api__upsell",
+        "settings": {
+          "defaultCollection": ""
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  }
+}
