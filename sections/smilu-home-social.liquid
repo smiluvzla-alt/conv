@@ -28,7 +28,7 @@
 <style>
   .wb-trustpilot-section {
     padding: 30px 0;
-    background-color: #030303; 
+    background-color: var(--smilu-bg-cream, #FAF9F6); 
     font-family: var(--font-family, 'Inter', sans-serif);
     overflow: hidden;
   }
@@ -55,7 +55,7 @@
     align-items: center;
     gap: 4px;
     margin: 0;
-    color: #FFFFFF;
+    color: var(--smilu-blue, #0A2540);
     white-space: nowrap;
   }
   .wb-tp-logo-star {
@@ -83,12 +83,12 @@
   .wb-tp-score {
     font-size: 16px;
     font-weight: 800;
-    color: #FFFFFF;
+    color: var(--smilu-blue, #0A2540);
     margin: 0;
   }
   .wb-tp-bottom-row p {
     font-size: 13px;
-    color: #A0A0A0;
+    color: #475569;
     margin: 0;
   }
 
@@ -117,11 +117,12 @@
   }
 
   .wb-review-card {
-    background: #0A0A0A;
+    background: #FFFFFF;
     width: 280px;
     padding: 18px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid rgba(10,37,64,0.05);
     border-top: 3px solid #00b67a;
     display: flex;
     flex-direction: column;
@@ -151,14 +152,14 @@
   .wb-review-title {
     font-weight: 800;
     font-size: 14px;
-    color: #FFFFFF;
+    color: var(--smilu-blue, #0A2540);
     margin: 0;
     line-height: 1.2;
   }
   
   .wb-review-body {
     font-size: 13px;
-    color: #CCCCCC;
+    color: #475569;
     line-height: 1.4;
     margin: 0;
     flex-grow: 1;
@@ -172,9 +173,9 @@
   }
   
   .wb-author-name {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 12px;
-    color: #FFFFFF;
+    color: var(--smilu-blue, #0A2540);
   }
   
   .wb-verified-tag {
