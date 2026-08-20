@@ -8,9 +8,15 @@
     {% endif %}
     
     .page__header {
-        width: 100%;
-        {% if layout == "boxed" %}max-width: var(--maxwidth);{% endif %}
-        background: {% if section.settings.headerBg contains 'rgba(0,0,0,0)' %}var(--bodyBackgroundColor){% else %}{{section.settings.headerBg}}{% endif %};
+        width: 95%;
+        max-width: 1200px;
+        margin: 20px auto 0 auto;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.75) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(10, 37, 64, 0.1);
+        box-shadow: 0 10px 40px rgba(10, 37, 64, 0.08);
         --height: {{section.settings.minHeight}}px;
         --logoWidth: {{section.settings.logoWidth}}px;
         --logoHeight: {{section.settings.logoHeight}}px;
@@ -19,8 +25,7 @@
         --tagColor: {{section.settings.tagBgColor}};
         --tagText: {{section.settings.tagTextColor}};
         display: flex;
-        margin: 0 auto;
-        {% if section.settings.shadow %}box-shadow: 0px 0px 20px rgba(0,0,0,.06);{% endif %}
+        padding: 0 20px;
     }
 
     .page__header.page__header--transparent {
@@ -32,8 +37,9 @@
 
     .page__header.page__header--sticky {
         position: fixed;
-        top: 0; 
-        width: 100%;
+        top: 20px; 
+        width: 95%;
+        max-width: 1200px;
         left: 50%;
         transform: translateX(-50%) translateY(0);
         z-index: 10;
