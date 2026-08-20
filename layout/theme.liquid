@@ -197,19 +197,22 @@
         color: #C89B3C;
       }
       .smilu-sticky-btn {
-        background: #0A2540;
+        background: var(--smilu-blue-vibrant, #005CFF);
         color: #FFFFFF;
         padding: 10px 24px;
         border-radius: 999px;
         font-weight: 700;
         text-decoration: none;
         font-size: 0.9rem;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         white-space: nowrap;
+        box-shadow: 0 4px 15px rgba(0, 92, 255, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+        border: none;
       }
       .smilu-sticky-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(10, 37, 64, 0.3);
+        background: #004BCC;
+        box-shadow: 0 8px 20px rgba(0, 92, 255, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
       }
       @media (max-width: 600px) {
         .smilu-sticky-bar {
