@@ -21,21 +21,42 @@
 
 <style>
   .smilu-ugc-wrapper {
-    background-color: var(--smilu-bg-light, #FFFFFF);
+    background-color: var(--smilu-bg-cream, #FAF9F6);
     padding: 100px 20px;
-    font-family: var(--font-family, -apple-system, sans-serif);
+    font-family: var(--font-sans, sans-serif);
   }
   .smilu-ugc-container {
     max-width: 1200px;
     margin: 0 auto;
   }
-  .smilu-ugc-heading {
+  .smilu-ugc-header {
     text-align: center;
-    font-weight: 900 !important;
-    font-size: clamp(2rem, 4vw, 3rem) !important;
-    color: var(--smilu-text-dark, #050505) !important;
     margin-bottom: 60px;
-    letter-spacing: -0.03em !important;
+  }
+  .smilu-ugc-heading {
+    font-family: var(--font-serif, serif) !important;
+    font-weight: 700 !important;
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+    color: var(--smilu-blue, #0A2540) !important;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em !important;
+    line-height: 1.1;
+  }
+  .smilu-ugc-trustpilot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .smilu-ugc-trust-stars {
+    color: #00B67A;
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+  .smilu-ugc-trust-text {
+    font-size: 0.95rem;
+    color: #475569;
+    font-weight: 500;
   }
   .smilu-ugc-grid {
     display: grid;
@@ -44,16 +65,17 @@
     align-items: start;
   }
   .smilu-ugc-card {
-    background: var(--smilu-gray-light, #F8FAFC);
-    border: 1px solid rgba(0,0,0,0.03);
+    background: #FFFFFF;
+    border: 1px solid rgba(10,37,64,0.05);
     border-radius: 12px;
-    padding: 24px;
+    padding: 32px 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
   }
   .smilu-ugc-card.is-visible {
     opacity: 1;
@@ -62,14 +84,14 @@
   .smilu-ugc-stars {
     display: flex;
     gap: 4px;
-    color: var(--smilu-primary, #00D4FF);
-    font-size: 16px;
+    color: #00B67A;
+    font-size: 18px;
   }
   .smilu-ugc-quote {
     font-weight: 500 !important;
-    font-size: 1.1rem !important;
-    color: var(--smilu-text-dark, #050505) !important;
-    line-height: 1.5 !important;
+    font-size: 1.05rem !important;
+    color: var(--smilu-blue, #0A2540) !important;
+    line-height: 1.6 !important;
     margin: 0;
   }
   .smilu-ugc-author {
@@ -80,9 +102,14 @@
     align-items: center;
     gap: 8px;
     margin: 0;
+    margin-top: 8px;
   }
   .smilu-ugc-verified {
-    color: var(--smilu-primary, #00D4FF);
+    color: #00B67A;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
   @media (max-width: 900px) {
@@ -99,7 +126,13 @@
 
 <div class="smilu-ugc-wrapper">
   <div class="smilu-ugc-container">
-    <h2 class="smilu-ugc-heading">{{ section.settings.heading }}</h2>
+    <div class="smilu-ugc-header">
+      <h2 class="smilu-ugc-heading">{{ section.settings.heading }}</h2>
+      <div class="smilu-ugc-trustpilot">
+        <div class="smilu-ugc-trust-stars">★★★★★</div>
+        <div class="smilu-ugc-trust-text"><strong>Excelente 4.8/5</strong> basado en 12,450 reseñas en Trustpilot</div>
+      </div>
+    </div>
     
     <div class="smilu-ugc-grid">
       <!-- Card 1 -->

@@ -36,6 +36,17 @@
 {% endschema %}
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --smilu-bg-cream: #FAF9F6;
+    --smilu-blue: #0A2540;
+    --smilu-cyan: #00D4FF;
+    --smilu-gold: #C89B3C;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
   .smilu-hero-wrapper {
     position: relative;
     width: 100%;
@@ -45,7 +56,7 @@
     align-items: center;
     justify-content: center;
     padding: 100px 20px;
-    background-color: var(--smilu-bg-light, #FFFFFF);
+    background-color: var(--smilu-bg-cream);
     overflow: hidden;
   }
   .smilu-hero-bg {
@@ -65,54 +76,59 @@
     align-items: center;
     gap: 30px;
   }
-  .smilu-hero-h1 {
-    font-family: var(--font-family, -apple-system, sans-serif) !important;
-    font-weight: 900 !important;
-    font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
-    line-height: 1.05 !important;
-    letter-spacing: -0.04em !important;
-    color: #050505 !important;
-    margin: 0;
+  .smilu-hero-title {
+    font-family: var(--font-serif) !important;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--smilu-blue) !important;
+    margin-bottom: 24px;
+    opacity: 0;
   }
-  .smilu-hero-sub {
-    font-family: var(--font-family, -apple-system, sans-serif) !important;
-    font-weight: 500 !important;
-    font-size: clamp(1.1rem, 2vw, 1.4rem) !important;
-    line-height: 1.5 !important;
-    color: #64748B !important;
+  .smilu-hero-subtitle {
+    font-family: var(--font-sans) !important;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #475569 !important;
+    margin-bottom: 40px;
     max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .smilu-hero-cta {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--smilu-primary, #00D4FF) !important;
-    color: #0A0A0C !important;
+    background: var(--smilu-blue) !important;
+    color: #FFFFFF !important;
     padding: 18px 40px;
-    border-radius: 4px;
+    border-radius: 999px;
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
+    box-shadow: 0 4px 6px rgba(10, 37, 64, 0.1);
     border: none;
     cursor: pointer;
     width: 100%;
     max-width: 400px;
   }
   .smilu-hero-cta:hover {
-    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(10, 37, 64, 0.3);
   }
   .smilu-cta-main {
     font-weight: 900 !important;
     font-size: 1.3rem !important;
-    color: #0A0A0C !important;
+    color: #FFFFFF !important;
   }
   .smilu-cta-sub {
     font-weight: 700 !important;
     font-size: 0.75rem !important;
     letter-spacing: 0.05em !important;
     opacity: 0.8 !important;
-    color: #0A0A0C !important;
+    color: #FFFFFF !important;
     margin-top: 4px;
   }
   @media (max-width: 768px) {
@@ -138,8 +154,8 @@
         <path d="M9 14l3-3 3 3"/>
       </svg>
     </div>
-    <h1 class="smilu-hero-h1">{{ section.settings.headline }}</h1>
-    <p class="smilu-hero-sub">{{ section.settings.subheadline }}</p>
+    <h1 class="smilu-hero-title">{{ section.settings.headline }}</h1>
+    <p class="smilu-hero-subtitle">{{ section.settings.subheadline }}</p>
     
     <a href="{{ section.settings.cta_link | default: '#pitch' }}" class="smilu-hero-cta">
       <span class="smilu-cta-main">Recuperar mi Confianza 🚀</span>
@@ -151,7 +167,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     // 1. Text Mask Reveal Effect (Awwwards Style)
-    const h1 = document.querySelector('.smilu-hero-h1');
+    const h1 = document.querySelector('.smilu-hero-title');
     if (h1) {
       h1.style.opacity = '0';
       h1.style.transform = 'translateY(40px)';

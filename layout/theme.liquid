@@ -157,6 +157,97 @@
       {% render 'scroll_top_button' %}
     {% endif %}
 
+    <!-- Sticky Buy Bar -->
+    <style>
+      .smilu-sticky-bar {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(150px);
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(10, 37, 64, 0.1);
+        border-radius: 999px;
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        box-shadow: 0 10px 40px rgba(10, 37, 64, 0.15);
+        z-index: 9999;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+        opacity: 0;
+        width: 90%;
+        max-width: 800px;
+        pointer-events: none;
+      }
+      .smilu-sticky-bar.is-visible {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .smilu-sticky-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #0A2540;
+      }
+      .smilu-sticky-highlight {
+        color: #C89B3C;
+      }
+      .smilu-sticky-btn {
+        background: #0A2540;
+        color: #FFFFFF;
+        padding: 10px 24px;
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        white-space: nowrap;
+      }
+      .smilu-sticky-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(10, 37, 64, 0.3);
+      }
+      @media (max-width: 600px) {
+        .smilu-sticky-bar {
+          bottom: 16px;
+          padding: 8px 12px;
+          gap: 12px;
+        }
+        .smilu-sticky-text {
+          font-size: 0.75rem;
+          line-height: 1.2;
+        }
+        .smilu-sticky-btn {
+          padding: 8px 16px;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+
+    <div class="smilu-sticky-bar" id="smiluStickyBar">
+      <div class="smilu-sticky-text">
+        <span class="smilu-sticky-highlight">Ahorra 30%</span> + Envío Inmediato | 🛡️ Garantía 90 Días
+      </div>
+      <a href="#pitch" class="smilu-sticky-btn">Ver Oferta</a>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const stickyBar = document.getElementById('smiluStickyBar');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 500) {
+            stickyBar.classList.add('is-visible');
+          } else {
+            stickyBar.classList.remove('is-visible');
+          }
+        });
+      });
+    </script>
+
   <!--
 888888b.                              888                88888888888 888                                      
 888  "88b                             888                    888     888                                      

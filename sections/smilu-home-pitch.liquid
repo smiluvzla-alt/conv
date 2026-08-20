@@ -26,9 +26,9 @@
 
 <style>
   .smilu-pitch-wrapper {
-    background-color: var(--smilu-bg-light, #FFFFFF);
+    background-color: var(--smilu-bg-cream, #FAF9F6);
     padding: 100px 20px;
-    font-family: var(--font-family, -apple-system, sans-serif);
+    font-family: var(--font-sans, sans-serif);
   }
   .smilu-pitch-container {
     max-width: 1200px;
@@ -36,11 +36,12 @@
   }
   .smilu-pitch-heading {
     text-align: center;
-    font-weight: 900 !important;
-    font-size: clamp(2rem, 4vw, 3rem) !important;
-    color: var(--smilu-text-dark, #050505) !important;
+    font-family: var(--font-serif, serif) !important;
+    font-weight: 700 !important;
+    font-size: clamp(2.5rem, 4vw, 3.5rem) !important;
+    color: var(--smilu-blue, #0A2540) !important;
     margin-bottom: 60px;
-    letter-spacing: -0.03em !important;
+    letter-spacing: -0.02em !important;
   }
   .smilu-pitch-grid {
     display: grid;
@@ -91,41 +92,98 @@
     flex-grow: 1;
   }
   .smilu-pitch-title {
-    font-weight: 800 !important;
-    font-size: 1.3rem !important;
-    color: var(--smilu-text-dark, #050505) !important;
+    font-family: var(--font-serif, serif) !important;
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    color: var(--smilu-blue, #0A2540) !important;
     margin-bottom: 8px;
     text-decoration: none;
   }
   .smilu-pitch-price {
     font-weight: 700 !important;
-    font-size: 1.1rem !important;
-    color: var(--smilu-primary, #00D4FF) !important;
+    font-size: 1.2rem !important;
+    color: var(--smilu-cyan, #00D4FF) !important;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
   }
   .smilu-pitch-price strike {
-    color: #64748B !important;
-    font-size: 0.9rem !important;
-    margin-left: 8px;
+    color: #94A3B8 !important;
+    font-size: 0.95rem !important;
+    margin-left: 10px;
+  }
+  
+  /* Offer Stacking CSS */
+  .smilu-offer-stack {
+    margin-bottom: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(10, 37, 64, 0.1);
+  }
+  .smilu-offer-stack-title {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--smilu-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .smilu-offer-stack-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .smilu-offer-stack-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #475569;
+    margin-bottom: 8px;
+  }
+  .smilu-offer-stack-item span:last-child {
+    font-weight: 600;
+  }
+  .smilu-offer-stack-item strike {
+    color: #94A3B8;
+    margin-right: 6px;
+    font-weight: 400;
+  }
+  .smilu-offer-free {
+    color: var(--smilu-cyan, #00D4FF);
   }
   .smilu-pitch-form {
     margin-top: auto;
   }
   .smilu-pitch-btn {
     width: 100%;
-    background: #050505 !important;
+    background: var(--smilu-blue, #0A2540) !important;
     color: #FFFFFF !important;
-    font-weight: 800 !important;
+    font-weight: 600 !important;
     font-size: 1.1rem !important;
-    padding: 14px;
-    border-radius: 10px;
+    padding: 16px;
+    border-radius: 999px; /* Pill Shape */
     border: none;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(10, 37, 64, 0.1);
   }
   .smilu-pitch-btn:hover {
-    background: #1E293B !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(10, 37, 64, 0.25);
+  }
+  .smilu-guarantee-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    background: rgba(10, 37, 64, 0.05);
+    color: var(--smilu-blue);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 16px;
+    width: 100%;
   }
 
   /* Placeholder Styling */
@@ -154,11 +212,33 @@
                 {% endif %}
               </div>
               
+              <!-- Offer Stack -->
+              <div class="smilu-offer-stack">
+                <div class="smilu-offer-stack-title">TU PEDIDO INCLUYE:</div>
+                <ul class="smilu-offer-stack-list">
+                  <li class="smilu-offer-stack-item">
+                    <span>{{ product.title }}</span>
+                    <span>Incluido</span>
+                  </li>
+                  <li class="smilu-offer-stack-item">
+                    <span>Envío Inmediato</span>
+                    <span><strike>$10.00</strike> <span class="smilu-offer-free">GRATIS</span></span>
+                  </li>
+                  <li class="smilu-offer-stack-item">
+                    <span>Acceso a Comunidad VIP</span>
+                    <span><strike>$25.00</strike> <span class="smilu-offer-free">GRATIS</span></span>
+                  </li>
+                </ul>
+              </div>
+              
               <div class="smilu-pitch-form">
                 {% form 'product', product %}
                   <input type="hidden" name="id" value="{{ product.variants.first.id }}">
                   <button type="submit" class="smilu-pitch-btn">Añadir al Carrito</button>
                 {% endform %}
+                <div class="smilu-guarantee-pill">
+                  🛡️ Garantía de 90 Días
+                </div>
               </div>
             </div>
           </div>

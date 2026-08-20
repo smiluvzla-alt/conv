@@ -1,0 +1,140 @@
+{% schema %}
+{
+  "name": "Smilu Home - Guarantee",
+  "tag": "section",
+  "class": "smilu-home-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titular",
+      "default": "Risk-Free"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subtítulo",
+      "default": "Siente la diferencia, o te devolvemos tu dinero."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smilu Home - Guarantee"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .smilu-guarantee-wrapper {
+    background-color: var(--smilu-bg-cream, #FAF9F6);
+    padding: 100px 20px;
+    font-family: var(--font-sans, sans-serif);
+    text-align: center;
+  }
+  .smilu-guarantee-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .smilu-guarantee-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 24px;
+    color: var(--smilu-gold, #C89B3C);
+  }
+  .smilu-guarantee-pill-tag {
+    background: rgba(200, 155, 60, 0.15);
+    color: var(--smilu-gold, #C89B3C);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 8px 16px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .smilu-guarantee-heading {
+    font-family: var(--font-serif, serif) !important;
+    font-weight: 700 !important;
+    font-size: clamp(2.5rem, 4vw, 3.5rem) !important;
+    color: var(--smilu-blue, #0A2540) !important;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em !important;
+    line-height: 1.1;
+  }
+  .smilu-guarantee-subheading {
+    font-size: 1.25rem;
+    color: #475569;
+    margin-bottom: 60px;
+  }
+  .smilu-guarantee-card {
+    background: #F3F0E9;
+    border-radius: 24px;
+    padding: 48px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .smilu-guarantee-days {
+    display: flex;
+    align-items:baseline;
+    gap: 8px;
+    color: var(--smilu-blue, #0A2540);
+  }
+  .smilu-guarantee-days-number {
+    font-family: var(--font-serif, serif) !important;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .smilu-guarantee-days-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .smilu-guarantee-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--smilu-blue, #0A2540);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .smilu-guarantee-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #475569;
+  }
+</style>
+
+<div class="smilu-guarantee-wrapper">
+  <div class="smilu-guarantee-container">
+    
+    <svg class="smilu-guarantee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+
+    <div class="smilu-guarantee-pill-tag">Nuestra Promesa</div>
+    
+    <h2 class="smilu-guarantee-heading">{{ section.settings.heading }}</h2>
+    <p class="smilu-guarantee-subheading">{{ section.settings.subheading }}</p>
+    
+    <div class="smilu-guarantee-card">
+      <div class="smilu-guarantee-days">
+        <span class="smilu-guarantee-days-number">90</span>
+        <span class="smilu-guarantee-days-text">DÍAS</span>
+      </div>
+      <div class="smilu-guarantee-label">GARANTÍA CLÍNICA INCONDICIONAL</div>
+      <div class="smilu-guarantee-description">
+        Tienes tres meses completos para experimentar la diferencia. Si no sientes una limpieza profunda y cristalina que destruya la paranoia del mal aliento — te devolveremos tu dinero por completo. Sin preguntas, sin fricción.
+      </div>
+    </div>
+    
+  </div>
+</div>
