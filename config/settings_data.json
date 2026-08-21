@@ -1,5 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
+    "cartStyle": "drawer",
+    "gdpr": false,
     "jQuery": true,
     "sections": {
       "top-info-bar": {
@@ -19,7 +30,7 @@
               "enabled": true,
               "enabledMobile": true,
               "align": "auto",
-              "messages": "<p><strong>Env\u00edo Gratis a todo el pa\u00eds \ud83d\ude80</strong></p>"
+              "messages": "<p><strong>Envío Gratis a todo el país 🚀</strong></p>"
             }
           },
           "ea7c1653-fbe0-4a55-904f-79a3118183d9": {
@@ -53,6 +64,7 @@
         "blocks": {
           "fd5af8ef-fb9f-490a-b4da-4144a48a519d": {
             "type": "infoBadge",
+            "disabled": true,
             "settings": {
               "icon": "shopping-bag",
               "heading": "This is awesome!",
@@ -61,6 +73,7 @@
           },
           "8f34a1fd-57f1-476d-b533-de18777ba59d": {
             "type": "infoBadge",
+            "disabled": true,
             "settings": {
               "icon": "shopping-cart",
               "heading": "This is awesome!",
@@ -69,6 +82,7 @@
           },
           "8f34a1fd-b533-de18777ba59d": {
             "type": "infoBadge",
+            "disabled": true,
             "settings": {
               "icon": "shopping-cart",
               "heading": "This is awesome!",
@@ -109,6 +123,7 @@
         "blocks": {
           "0e188e08-01bf-4244-8aa3-997ce12eca05": {
             "type": "footerText",
+            "disabled": true,
             "settings": {
               "width": "3",
               "horizontalAlignment": "start",
@@ -119,6 +134,7 @@
           },
           "79c988f6-1297-4df0-9e07-f6f74537046f": {
             "type": "footerLinks",
+            "disabled": true,
             "settings": {
               "width": "3",
               "horizontalAlignment": "start",
@@ -129,6 +145,7 @@
           },
           "cfabfbdb-82fa-47c0-b6c4-af5438cd404d": {
             "type": "footerLinks",
+            "disabled": true,
             "settings": {
               "width": "3",
               "horizontalAlignment": "start",
@@ -170,7 +187,7 @@
               "horizontalAlignment": "center",
               "verticalAlignment": "middle",
               "heading": "",
-              "text": "<p>Designed and developed by <a target=\"_blank\" href=\"https://boostertheme.com/\">BoosterTheme\u2122</a></p>"
+              "text": "<p>Designed and developed by <a target=\"_blank\" href=\"https://boostertheme.com/\">BoosterTheme™</a></p>"
             }
           }
         },
@@ -203,10 +220,10 @@
           "accentColor": "#000000",
           "hoverStyle": "underline",
           "tagBgColor": "#000",
-          "tagTextColor": "#FFF",
+          "tagTextColor": "#fff",
           "transparent": false,
-          "linkColorT": "#FFF",
-          "accentColorT": "#EFEFEF",
+          "linkColorT": "#fff",
+          "accentColorT": "#efefef",
           "fontSize": "base",
           "customFont": false,
           "fontFamily": "work_sans_n6",
@@ -235,8 +252,6 @@
         }
       }
     },
-    "content_for_index": [],
-    "gdpr": false,
-    "cartStyle": "drawer"
+    "content_for_index": []
   }
 }
