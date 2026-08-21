@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "irrigador-salespage": {
+      "type": "smilu-irrigador-salespage",
+      "settings": {
+        "hero_title": "El irrigador que no apesta. Ni tu baño. Ni tu aliento.",
+        "hero_subtitle": "Tecnología sónica de 1.700 pulsos por minuto. Diseño boutique. Sin fugas. Sin hongos. Sin mal aliento."
+      }
+    }
+  },
+  "order": [
+    "irrigador-salespage"
+  ]
+}
