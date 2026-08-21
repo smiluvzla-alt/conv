@@ -19,7 +19,7 @@
               "enabled": true,
               "enabledMobile": true,
               "align": "auto",
-              "messages": "<p><strong>Envío Gratis a todo el país 🚀<\/strong><\/p>"
+              "messages": "<p><strong>Env\u00edo Gratis a todo el pa\u00eds \ud83d\ude80</strong></p>"
             }
           },
           "ea7c1653-fbe0-4a55-904f-79a3118183d9": {
@@ -114,7 +114,7 @@
               "horizontalAlignment": "start",
               "verticalAlignment": "middle",
               "heading": "Booster 6 revolution",
-              "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements or welcome customers to your store.<\/p>"
+              "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements or welcome customers to your store.</p>"
             }
           },
           "79c988f6-1297-4df0-9e07-f6f74537046f": {
@@ -170,7 +170,7 @@
               "horizontalAlignment": "center",
               "verticalAlignment": "middle",
               "heading": "",
-              "text": "<p>Designed and developed by <a target=\"_blank\" href=\"https:\/\/boostertheme.com\/\">BoosterTheme™<\/a><\/p>"
+              "text": "<p>Designed and developed by <a target=\"_blank\" href=\"https://boostertheme.com/\">BoosterTheme\u2122</a></p>"
             }
           }
         },
@@ -235,8 +235,8 @@
         }
       }
     },
-    "content_for_index": [
-
-    ]
+    "content_for_index": [],
+    "gdpr": false,
+    "cartStyle": "drawer"
   }
 }
