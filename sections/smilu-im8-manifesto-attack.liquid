@@ -1,0 +1,105 @@
+{% schema %}
+{
+  "name": "IM8 Manifesto Attack",
+  "tag": "section",
+  "class": "smilu-im8-manifesto",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "manifesto_text",
+      "label": "Manifesto Text",
+      "default": "Cepillarse con plástico genérico en 2026 es primitivo. El 80% de los problemas dentales nacen de herramientas obsoletas."
+    },
+    {
+      "type": "text",
+      "id": "manifesto_highlight",
+      "label": "Highlight (Yellow/Accent)",
+      "default": "Exige el estándar clínico."
+    }
+  ],
+  "presets": [
+    {
+      "name": "IM8 Manifesto Attack"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  :root {
+    --sm-im8-bg-darkest: #F1F5F9; /* Light Slate */
+  }
+
+  .im8-manifesto-wrapper {
+    background-color: var(--sm-im8-bg-darkest);
+    padding: 180px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Aggressive radial glow to create focus */
+  .im8-manifesto-glow {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(0, 194, 255, 0.08) 0%, rgba(255,255,255,0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .im8-manifesto-content {
+    max-width: 900px;
+    z-index: 2;
+  }
+
+  .im8-manifesto-text {
+    font-family: var(--font-family, -apple-system, sans-serif) !important;
+    font-size: clamp(2rem, 5vw, 4rem) !important;
+    font-weight: 900 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+    color: #0B2033 !important;
+    margin: 0 0 24px 0;
+  }
+
+  .im8-manifesto-highlight {
+    display: block;
+    margin-top: 24px;
+    color: var(--sm-brand-cyan, #00C2FF) !important; /* Aggressive Cyan */
+  }
+
+  /* Optional: Small placeholder for a disruptive icon */
+  .im8-manifesto-icon-placeholder {
+    margin: 0 auto 40px;
+    width: 80px;
+    height: 80px;
+    border: 1px dashed rgba(0, 194, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sm-brand-cyan, #00C2FF) !important;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+</style>
+
+<div class="im8-manifesto-wrapper">
+  <div class="im8-manifesto-glow"></div>
+  <div class="im8-manifesto-content">
+    <div class="im8-manifesto-icon-placeholder">
+      [ SVG ]
+    </div>
+    <h2 class="im8-manifesto-text">
+      {{ section.settings.manifesto_text }}
+      <span class="im8-manifesto-highlight">{{ section.settings.manifesto_highlight }}</span>
+    </h2>
+  </div>
+</div>

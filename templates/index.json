@@ -1,56 +1,21 @@
 {
   "sections": {
-    "behance-hero": {
-      "type": "smilu-behance-hero",
+    "im8-hero-buybox": {
+      "type": "smilu-im8-hero",
       "settings": {}
     },
-    "bento-storytelling": {
-      "type": "smilu-bento-storytelling",
+    "im8-clinical-cascade": {
+      "type": "smilu-im8-clinical-cascade",
       "settings": {}
     },
-    "im8-manifesto": {
-      "type": "smilu-scroll-manifesto",
-      "settings": {}
-    },
-    "im8-clinical": {
-      "type": "smilu-clinical-breakdown",
-      "settings": {}
-    },
-    "home-social": {
-      "type": "smilu-home-social",
-      "settings": {}
-    },
-    "home-pivot": {
-      "type": "smilu-home-pivot",
-      "settings": {}
-    },
-    "home-pitch": {
-      "type": "smilu-home-pitch",
-      "settings": {}
-    },
-    "home-connection": {
-      "type": "smilu-home-connection",
-      "settings": {}
-    },
-    "home-ugc": {
-      "type": "smilu-home-ugc",
-      "settings": {}
-    },
-    "home-closing": {
-      "type": "smilu-home-closing",
+    "im8-manifesto-attack": {
+      "type": "smilu-im8-manifesto-attack",
       "settings": {}
     }
   },
   "order": [
-    "behance-hero",
-    "bento-storytelling",
-    "im8-manifesto",
-    "im8-clinical",
-    "home-social",
-    "home-pivot",
-    "home-pitch",
-    "home-connection",
-    "home-ugc",
-    "home-closing"
+    "im8-hero-buybox",
+    "im8-clinical-cascade",
+    "im8-manifesto-attack"
   ]
 }

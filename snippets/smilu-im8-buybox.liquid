@@ -1,0 +1,215 @@
+<style>
+  .smilu-buybox-wrapper {
+    background: #FFFFFF;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .smilu-buybox-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .smilu-bb-title {
+    font-family: var(--font-family, -apple-system, sans-serif) !important;
+    font-size: 2rem !important;
+    font-weight: 900 !important;
+    color: #0B2033 !important;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .smilu-bb-price {
+    font-family: var(--font-family, -apple-system, sans-serif) !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #0B2033 !important;
+  }
+
+  .smilu-bb-stock {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 59, 48, 0.1);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #FF3B30 !important;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #FF3B30;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(255, 59, 48, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
+  }
+
+  .smilu-mp-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 158, 227, 0.1);
+    border: 1px solid rgba(0, 158, 227, 0.2);
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .smilu-mp-text {
+    font-size: 0.85rem;
+    color: #0B2033 !important;
+    font-weight: 600;
+  }
+
+  .smilu-mp-text span {
+    color: #00C97B !important;
+  }
+
+  .smilu-shipping-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.02);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0B2033 !important;
+  }
+
+  .smilu-dual-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--sm-brand-cyan, #00C2FF) !important;
+    color: #FFFFFF !important;
+    border: none;
+    border-radius: 100px;
+    padding: 18px 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  .smilu-dual-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 194, 255, 0.3);
+  }
+
+  .cta-title {
+    font-family: var(--font-family, -apple-system, sans-serif) !important;
+    font-size: 1.1rem !important;
+    font-weight: 900 !important;
+    color: #FFFFFF !important;
+  }
+
+  .cta-subtitle {
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .smilu-trustpilot-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  .tp-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .tp-stars svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .tp-text {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #475569 !important;
+  }
+
+  .tp-text strong {
+    color: #00B67A !important;
+  }
+</style>
+
+<div class="smilu-buybox-wrapper">
+  <!-- Stock Indicator -->
+  <div class="smilu-bb-stock">
+    <div class="pulse-dot"></div>
+    <span>Solo quedan {{ 'now' | date: '%S' | modulo: 5 | plus: 3 }} unidades en oferta</span>
+  </div>
+
+  <!-- Header -->
+  <div class="smilu-buybox-header">
+    <h2 class="smilu-bb-title">Smilü V1 Pro</h2>
+    <div class="smilu-bb-price">$129.000</div>
+  </div>
+
+  <!-- MercadoPago Banner -->
+  <div class="smilu-mp-banner">
+    <div class="smilu-mp-text">
+      Paga en 3 cuotas de <span>$43.000</span> Sin Interés
+    </div>
+    <!-- Placeholder for MercadoPago Logo SVG -->
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="24" height="24" rx="4" fill="#009EE3"/>
+      <path d="M7 15V9H10C11.6569 9 13 10.3431 13 12C13 13.6569 11.6569 15 10 15H7ZM9 13H10C10.5523 13 11 12.5523 11 12C11 11.4477 10.5523 11 10 11H9V13Z" fill="white"/>
+      <path d="M14 15V9H17V10H16V14H17V15H14Z" fill="white"/>
+    </svg>
+  </div>
+
+  <!-- Shipping -->
+  <div class="smilu-shipping-banner">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C97B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="1" y="3" width="15" height="13"></rect>
+      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+      <circle cx="18.5" cy="18.5" r="2.5"></circle>
+    </svg>
+    <span>Envío Inmediato a todo el país (Mismo Día)</span>
+  </div>
+
+  <!-- Dual-Text CTA -->
+  <button class="smilu-dual-cta">
+    <span class="cta-title">Recuperar mi Salud Dental 🎁</span>
+    <span class="cta-subtitle">Antes de que se agote la promo 🔥</span>
+  </button>
+
+  <!-- Trustpilot Integration -->
+  <div class="smilu-trustpilot-box">
+    <div class="tp-stars">
+      <!-- 5 Green Stars -->
+      {% for i in (1..5) %}
+        <svg viewBox="0 0 24 24" fill="#00B67A" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+        </svg>
+      {% endfor %}
+    </div>
+    <div class="tp-text">Excelente <strong>4.9/5</strong> en Trustpilot</div>
+    <div class="tp-text" style="font-size: 0.7rem;">Basado en +12,000 usuarios</div>
+  </div>
+</div>

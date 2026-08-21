@@ -1,0 +1,204 @@
+{% schema %}
+{
+  "name": "IM8 Clinical Cascade",
+  "tag": "section",
+  "class": "smilu-im8-clinical-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cascade_title",
+      "label": "Cascade Title",
+      "default": "Anatomía de la Perfección"
+    }
+  ],
+  "presets": [
+    {
+      "name": "IM8 Clinical Cascade"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  :root {
+    --sm-im8-bg-alt: #F8FAFC; /* Soft Blue-Grey */
+    --sm-im8-text: #0B2033; /* Dark Navy, NO BLACK */
+  }
+
+  .im8-cascade-wrapper {
+    background-color: var(--sm-im8-bg-alt);
+    color: var(--sm-im8-text) !important;
+    position: relative;
+    padding: 0;
+  }
+
+  /* Sticky Container */
+  .im8-cascade-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 15vh;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .im8-cascade-title {
+    font-family: var(--font-family, -apple-system, sans-serif) !important;
+    font-size: clamp(2.5rem, 5vw, 4rem) !important;
+    font-weight: 900 !important;
+    color: var(--sm-im8-text) !important;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em !important;
+    z-index: 2;
+  }
+
+  /* Scrolling Content */
+  .im8-cascade-content {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 20vh;
+    margin-top: -60vh; /* Pull content up over the sticky background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .im8-cascade-card {
+    background: #FFFFFF;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    width: 90%;
+    max-width: 800px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .im8-cascade-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .im8-card-visual {
+    width: 160px;
+    height: 160px;
+    background: rgba(0, 194, 255, 0.03);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(0,194,255,0.4);
+    flex-shrink: 0;
+  }
+
+  .im8-card-visual span {
+    font-size: 0.7rem;
+    color: var(--sm-brand-cyan, #00C2FF) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .im8-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .im8-card-title {
+    font-family: var(--font-family, -apple-system, sans-serif) !important;
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+    color: #0B2033 !important;
+    margin: 0;
+  }
+
+  .im8-card-desc {
+    font-size: 1rem !important;
+    color: #475569 !important;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .im8-cascade-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 32px 24px;
+    }
+  }
+</style>
+
+<div class="im8-cascade-wrapper">
+  <div class="im8-cascade-sticky">
+    <h2 class="im8-cascade-title">{{ section.settings.cascade_title }}</h2>
+  </div>
+
+  <div class="im8-cascade-content">
+    <!-- Card 1 -->
+    <div class="im8-cascade-card js-scroll-card">
+      <div class="im8-card-visual">
+        <span>[ Motor Sónico ]</span>
+      </div>
+      <div class="im8-card-text">
+        <h3 class="im8-card-title">Motor de Levitación Magnética</h3>
+        <p class="im8-card-desc">Transfiere energía directamente a las cerdas, no a tu mano. 40,000 micro-vibraciones por minuto para una limpieza clínica.</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="im8-cascade-card js-scroll-card">
+      <div class="im8-card-visual">
+        <span>[ Cerdas DuPont ]</span>
+      </div>
+      <div class="im8-card-text">
+        <h3 class="im8-card-title">Arquitectura de Cerdas DuPont™</h3>
+        <p class="im8-card-desc">Cortes en forma de 'W' diseñados matemáticamente para abrazar la topografía de cada diente. Eliminación total de placa sin sangrado.</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="im8-cascade-card js-scroll-card">
+      <div class="im8-card-visual">
+        <span>[ Batería Litio ]</span>
+      </div>
+      <div class="im8-card-text">
+        <h3 class="im8-card-title">180 Días de Autonomía</h3>
+        <p class="im8-card-desc">Cárgalo dos veces al año. Nuestra celda de iones de litio de alta densidad destruye la obsolescencia programada.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.js-scroll-card').forEach(card => {
+      observer.observe(card);
+    });
+  });
+</script>
