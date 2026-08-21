@@ -28,6 +28,13 @@
             min-height: max(var(--height), 4em);
         }
     }
+
+    .page__header--desktop {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease !important;
+    }
+    .page__header--desktop.is-hidden {
+      transform: translate(-50%, -150%) !important;
+    }
 </style>
 
 <div data-search-container class="search__container--abs">
@@ -184,7 +191,38 @@
       border-color: rgba(255, 255, 255, 0.2);
     }
   }
+
+    .page__header--desktop {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease !important;
+    }
+    .page__header--desktop.is-hidden {
+      transform: translate(-50%, -150%) !important;
+    }
 </style>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.page__header--desktop');
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+      if (!header) return;
+      const currentScrollY = window.scrollY;
+      
+      // Si scrollea hacia abajo y pasa los 150px, oculta
+      if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        header.classList.add('is-hidden');
+      } 
+      // Si scrollea hacia arriba, muestra
+      else {
+        header.classList.remove('is-hidden');
+      }
+      
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  });
+</script>
 
 {% schema %}
 {

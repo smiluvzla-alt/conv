@@ -164,6 +164,7 @@
       {% render 'scroll_top_button' %}
     {% endif %}
 
+    
     <!-- Sticky Buy Bar -->
     <style>
       .smilu-sticky-bar {
@@ -215,12 +216,36 @@
         white-space: nowrap;
         box-shadow: 0 4px 15px rgba(0, 92, 255, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
         border: none;
+        cursor: pointer;
       }
       .smilu-sticky-btn:hover {
         transform: translateY(-2px);
         background: #004BCC;
         box-shadow: 0 8px 20px rgba(0, 92, 255, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
       }
+      
+      /* Variación para Salespage (Azulado) */
+      .smilu-sticky-bar--product {
+        background: rgba(0, 92, 255, 0.85); 
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 40px rgba(0, 92, 255, 0.3);
+      }
+      .smilu-sticky-bar--product .smilu-sticky-text {
+        color: #FFFFFF;
+      }
+      .smilu-sticky-bar--product .smilu-sticky-highlight {
+        color: #7BD1FF;
+      }
+      .smilu-sticky-btn--product {
+        background: #FFFFFF;
+        color: #005CFF;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .smilu-sticky-btn--product:hover {
+        background: #F0F4FF;
+        color: #004BCC;
+      }
+
       @media (max-width: 600px) {
         .smilu-sticky-bar {
           bottom: 16px;
@@ -238,23 +263,33 @@
       }
     </style>
 
+    {% if template == 'index' %}
     <div class="smilu-sticky-bar" id="smiluStickyBar">
       <div class="smilu-sticky-text">
         <span class="smilu-sticky-highlight">Ahorra 30%</span> + Envío Inmediato | 🛡️ Garantía 90 Días
       </div>
-      <a href="#pitch" class="smilu-sticky-btn">Ver Oferta</a>
+      <a href="/products/irrigador-h2ofloss" class="smilu-sticky-btn">Ver Oferta</a>
     </div>
+    {% elsif template contains 'product' %}
+    <div class="smilu-sticky-bar smilu-sticky-bar--product" id="smiluStickyBar">
+      <div class="smilu-sticky-text">
+        <span class="smilu-sticky-highlight">Oferta Limitada</span> | Irrigador Smilu
+      </div>
+      <button class="smilu-sticky-btn smilu-sticky-btn--product" onclick="const btn = document.querySelector('button[data-buy-button]') || document.querySelector('.product-form__submit') || document.querySelector('form[action*='/cart/add'] button[type=submit]'); if(btn) btn.click(); else window.location.href='#pitch';">Pedir Ahora</button>
+    </div>
+    {% endif %}
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const stickyBar = document.getElementById('smiluStickyBar');
+        if(!stickyBar) return;
         window.addEventListener('scroll', () => {
           if (window.scrollY > 500) {
             stickyBar.classList.add('is-visible');
           } else {
             stickyBar.classList.remove('is-visible');
           }
-        });
+        }, { passive: true });
       });
     </script>
 
