@@ -66,9 +66,9 @@
 
 <style>
   .clinical-breakdown-wrapper {
-    background-color: #0A0A0C; /* OLED Black */
+    background-color: var(--sm-cream, #F8FAFC);
     padding: clamp(80px, 10vw, 140px) 20px;
-    color: #FFF;
+    color: var(--sm-ink, #0A0A0C);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,9 +84,7 @@
     text-align: center;
     margin-bottom: 80px;
     z-index: 2;
-    background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--sm-ink, #0A0A0C);
   }
 
   .clinical-hardware-container {
@@ -143,16 +141,16 @@
     left: 40px;
     transform: translateY(-50%) translateX(20px);
     width: 280px;
-    background: rgba(15, 23, 42, 0.7);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 16px;
     padding: 20px;
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     pointer-events: none;
   }
 
@@ -176,7 +174,7 @@
   .hotspot-card-title {
     font-size: 1.125rem;
     font-weight: 800;
-    color: #FFF !important;
+    color: var(--sm-ink, #0A0A0C) !important;
     margin: 0 0 8px 0;
     display: flex;
     align-items: center;
@@ -195,7 +193,7 @@
   .hotspot-card-desc {
     font-size: 0.9rem;
     line-height: 1.5;
-    color: #94A3B8 !important;
+    color: #475569 !important;
     margin: 0;
   }
 

@@ -1,0 +1,260 @@
+{% schema %}
+{
+  "name": "Smilü Behance Hero",
+  "tag": "section",
+  "class": "smilu-behance-hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Titular Masivo",
+      "default": "La Nueva Era Sónica."
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Subtítulo",
+      "default": "Diseñado para destruir bacterias. Construido para lucir increíble en tu baño."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Imagen 3D Principal"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texto del Botón",
+      "default": "Descubrir Smilü V1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smilü Behance Hero"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  :root {
+    --sm-cream: #F8FAFC; /* Off-white clínico pero cálido */
+    --sm-ink: #0A0A0C;
+    --sm-blue: #005CFF;
+    --sm-mint: #00B67A;
+  }
+
+  .behance-hero-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--sm-cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 120px 20px 40px;
+    z-index: 1;
+  }
+
+  /* Decorative Background Elements (Soft gradients) */
+  .behance-glow-1 {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(0, 92, 255, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+    z-index: -1;
+  }
+
+  .behance-glow-2 {
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(0, 182, 122, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
+    z-index: -1;
+  }
+
+  /* Typography */
+  .behance-hero-content {
+    text-align: center;
+    max-width: 1000px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .behance-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(0, 92, 255, 0.1);
+    color: var(--sm-blue) !important;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+  }
+
+  .behance-title {
+    font-family: var(--font-serif, -apple-system, sans-serif) !important;
+    font-size: clamp(3rem, 8vw, 7rem) !important;
+    font-weight: 900 !important;
+    line-height: 0.95 !important;
+    letter-spacing: -0.05em !important;
+    color: var(--sm-ink) !important;
+    margin: 0 0 24px 0;
+  }
+
+  .behance-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.5rem) !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.5 !important;
+  }
+
+  /* 3D Floating Element */
+  .behance-3d-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -40px; /* Pull it up into the text slightly for depth */
+    z-index: 3;
+    perspective: 1000px;
+  }
+
+  .behance-3d-img {
+    height: 120%;
+    object-fit: contain;
+    filter: drop-shadow(0 40px 80px rgba(10, 10, 12, 0.15));
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out; /* Smooth JS follow */
+    animation: float3D 6s ease-in-out infinite;
+  }
+
+  @keyframes float3D {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+
+  /* Magnetic Primary Button */
+  .behance-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sm-ink) !important;
+    color: #FFFFFF !important;
+    font-size: 1.125rem;
+    font-weight: 700;
+    padding: 20px 40px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(10, 10, 12, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 4;
+    position: relative;
+  }
+
+  .behance-primary-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(10, 10, 12, 0.3);
+    background: var(--sm-blue) !important;
+  }
+
+  @media (max-width: 768px) {
+    .behance-3d-container {
+      height: 50vh;
+      margin-top: 0;
+    }
+    .behance-3d-img {
+      height: 100%;
+    }
+  }
+</style>
+
+<div class="behance-hero-wrapper">
+  <div class="behance-glow-1"></div>
+  <div class="behance-glow-2"></div>
+
+  <div class="behance-hero-content">
+    <div class="behance-badge">Estudio de Diseño Dental</div>
+    <h1 class="behance-title">{{ section.settings.headline }}</h1>
+    <p class="behance-subtitle">{{ section.settings.subheadline }}</p>
+    
+    <button class="behance-primary-btn magnetic-btn">
+      {{ section.settings.btn_text }}
+    </button>
+  </div>
+
+  <div class="behance-3d-container tilt-container">
+    {% if section.settings.hero_image != blank %}
+      <img src="{{ section.settings.hero_image | image_url: width: 1440 }}" class="behance-3d-img tilt-element" alt="Smilü 3D Brush" fetchpriority="high">
+    {% else %}
+      <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-1_large.png?format=webp" class="behance-3d-img tilt-element" alt="Smilü 3D Brush">
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 3D Tilt Effect for Desktop
+    if (window.innerWidth > 1024) {
+      const container = document.querySelector('.tilt-container');
+      const element = document.querySelector('.tilt-element');
+      
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -15; // Max 15deg
+        const rotateY = ((x - centerX) / centerX) * 15;
+        
+        // Disable CSS animation while hovering
+        element.style.animation = 'none';
+        element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        element.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        // Restore CSS float animation after a delay
+        setTimeout(() => {
+          element.style.animation = 'float3D 6s ease-in-out infinite';
+        }, 300);
+      });
+    }
+
+    // Magnetic Button
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+    magneticBtns.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+        const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  });
+</script>

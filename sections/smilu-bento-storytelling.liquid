@@ -1,0 +1,174 @@
+{% schema %}
+{
+  "name": "Smilü Bento Storytelling",
+  "tag": "section",
+  "class": "smilu-bento-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Título de Sección",
+      "default": "Diseñado para superar el estándar."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smilü Bento Storytelling"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .smilu-bento-wrapper {
+    background-color: var(--sm-cream, #F8FAFC);
+    padding: clamp(80px, 10vw, 140px) 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .smilu-bento-title {
+    font-family: var(--font-serif, -apple-system, sans-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--sm-ink, #0A0A0C) !important;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .smilu-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 300px);
+    gap: 24px;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  /* Base Card Styling */
+  .bento-card {
+    background: #FFFFFF;
+    border-radius: 32px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(10, 10, 12, 0.03);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  }
+
+  .bento-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(10, 10, 12, 0.08);
+  }
+
+  /* Specific Cards */
+  .bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
+    background: radial-gradient(circle at bottom right, rgba(0, 92, 255, 0.05) 0%, #FFFFFF 60%);
+  }
+
+  .bento-medium-1 {
+    grid-column: span 1;
+    grid-row: span 1;
+    background: #005CFF;
+    color: #FFFFFF;
+  }
+
+  .bento-medium-2 {
+    grid-column: span 1;
+    grid-row: span 1;
+    background: #00B67A;
+    color: #FFFFFF;
+  }
+
+  /* Card Typography */
+  .bento-card-title {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px 0;
+    line-height: 1.1;
+  }
+  
+  .bento-large .bento-card-title {
+    color: var(--sm-ink, #0A0A0C) !important;
+  }
+
+  .bento-card-desc {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.5;
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .bento-large .bento-card-desc {
+    color: #475569 !important;
+    max-width: 400px;
+  }
+
+  /* Decorative Visuals inside Cards */
+  .bento-visual-sonic {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 60%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+  }
+
+  .bento-icon {
+    margin-top: auto;
+    width: 48px;
+    height: 48px;
+  }
+
+  @media (max-width: 900px) {
+    .smilu-bento-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .bento-large, .bento-medium-1, .bento-medium-2 {
+      grid-column: span 1;
+      grid-row: span 1;
+      min-height: 300px;
+    }
+    .bento-visual-sonic {
+      width: 80%;
+    }
+  }
+</style>
+
+<div class="smilu-bento-wrapper">
+  <h2 class="smilu-bento-title">{{ section.settings.section_title }}</h2>
+
+  <div class="smilu-bento-grid">
+    <!-- Large Card: Sonic Motor -->
+    <div class="bento-card bento-large">
+      <h3 class="bento-card-title">Motor Sónico<br>de Levitación.</h3>
+      <p class="bento-card-desc">40,000 vibraciones por minuto diseñadas meticulosamente para desintegrar la placa bacteriana sin herir tus encías.</p>
+      <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-2_large.png?format=webp" alt="Sonic Motor" class="bento-visual-sonic">
+    </div>
+
+    <!-- Medium Card 1: Anti-bacterial -->
+    <div class="bento-card bento-medium-1">
+      <h3 class="bento-card-title">Cero Moho.</h3>
+      <p class="bento-card-desc">Cuerpo sellado herméticamente y materiales clínicos que repelen la humedad y las bacterias.</p>
+      <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    </div>
+
+    <!-- Medium Card 2: Battery -->
+    <div class="bento-card bento-medium-2">
+      <h3 class="bento-card-title">30 Días de<br>Batería.</h3>
+      <p class="bento-card-desc">Olvida el cargador. Una sola carga te da un mes entero de sonrisas perfectas.</p>
+      <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+    </div>
+  </div>
+</div>

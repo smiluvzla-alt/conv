@@ -1,0 +1,86 @@
+<!-- Smilü Sticky Bottom Bar -->
+<style>
+  .smilu-sticky-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(150%); /* Hidden initially */
+    width: 90%;
+    max-width: 600px;
+    background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 12px 16px 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .smilu-sticky-bar.is-visible {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .sticky-bar-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sticky-bar-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #FFF;
+    margin: 0;
+  }
+
+  .sticky-bar-price {
+    font-size: 0.85rem;
+    color: #94A3B8;
+    margin: 0;
+  }
+
+  .sticky-bar-btn {
+    background: var(--sm-blue, #005CFF);
+    color: #FFF;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 92, 255, 0.3);
+    transition: transform 0.2s;
+  }
+  
+  .sticky-bar-btn:hover {
+    transform: scale(1.05);
+  }
+</style>
+
+<div class="smilu-sticky-bar" id="smiluStickyBar">
+  <div class="sticky-bar-info">
+    <span class="sticky-bar-title">Smilü V1 Pro</span>
+    <span class="sticky-bar-price">$89.000 CLP</span>
+  </div>
+  <button class="sticky-bar-btn">Añadir al Carrito</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const stickyBar = document.getElementById('smiluStickyBar');
+    
+    // Show sticky bar after scrolling down 500px
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        stickyBar.classList.add('is-visible');
+      } else {
+        stickyBar.classList.remove('is-visible');
+      }
+    });
+  });
+</script>

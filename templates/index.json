@@ -1,7 +1,11 @@
 {
   "sections": {
-    "im8-buybox": {
-      "type": "smilu-im8-buybox",
+    "behance-hero": {
+      "type": "smilu-behance-hero",
+      "settings": {}
+    },
+    "bento-storytelling": {
+      "type": "smilu-bento-storytelling",
       "settings": {}
     },
     "im8-manifesto": {
@@ -38,7 +42,8 @@
     }
   },
   "order": [
-    "im8-buybox",
+    "behance-hero",
+    "bento-storytelling",
     "im8-manifesto",
     "im8-clinical",
     "home-social",
