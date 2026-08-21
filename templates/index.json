@@ -1,7 +1,15 @@
 {
   "sections": {
-    "home-hero": {
-      "type": "smilu-home-hero",
+    "im8-buybox": {
+      "type": "smilu-im8-buybox",
+      "settings": {}
+    },
+    "im8-manifesto": {
+      "type": "smilu-scroll-manifesto",
+      "settings": {}
+    },
+    "im8-clinical": {
+      "type": "smilu-clinical-breakdown",
       "settings": {}
     },
     "home-social": {
@@ -30,7 +38,9 @@
     }
   },
   "order": [
-    "home-hero",
+    "im8-buybox",
+    "im8-manifesto",
+    "im8-clinical",
     "home-social",
     "home-pivot",
     "home-pitch",

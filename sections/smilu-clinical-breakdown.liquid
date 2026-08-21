@@ -1,0 +1,275 @@
+{% schema %}
+{
+  "name": "Smilü Clinical Breakdown",
+  "tag": "section",
+  "class": "smilu-clinical-breakdown",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Ingeniería Clínica. Cero Fricción."
+    },
+    {
+      "type": "image_picker",
+      "id": "hardware_image",
+      "label": "Imagen del Cepillo Central"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Punto Clínico",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título del Hotspot",
+          "default": "Motor Sónico de Levitación"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descripción",
+          "default": "40,000 vibraciones por minuto para destruir la placa sin dañar el esmalte."
+        },
+        {
+          "type": "range",
+          "id": "position_top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Posición Vertical (Top)",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "position_left",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Posición Horizontal (Left)",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smilü Clinical Breakdown"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .clinical-breakdown-wrapper {
+    background-color: #0A0A0C; /* OLED Black */
+    padding: clamp(80px, 10vw, 140px) 20px;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .clinical-breakdown-title {
+    font-family: var(--font-serif, -apple-system, sans-serif);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    text-align: center;
+    margin-bottom: 80px;
+    z-index: 2;
+    background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .clinical-hardware-container {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    aspect-ratio: 1 / 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .clinical-hardware-img {
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 50px rgba(0, 92, 255, 0.15));
+  }
+
+  /* Hotspots */
+  .clinical-hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .hotspot-dot {
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 92, 255, 0.8);
+    border: 2px solid #FFF;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0 0 0 rgba(0, 92, 255, 0.7);
+    animation: pulseBlue 2s infinite cubic-bezier(0.66, 0, 0, 1);
+    transition: transform 0.3s ease;
+  }
+
+  .hotspot-dot:hover {
+    transform: scale(1.2);
+    background: #005CFF;
+  }
+
+  @keyframes pulseBlue {
+    to {
+      box-shadow: 0 0 0 15px rgba(0, 92, 255, 0);
+    }
+  }
+
+  /* Tooltip Card (Glassmorphism) */
+  .hotspot-card {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%) translateX(20px);
+    width: 280px;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    pointer-events: none;
+  }
+
+  .clinical-hotspot:hover .hotspot-card {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  /* Reverse layout if hotspot is on the right side */
+  .clinical-hotspot[data-side="right"] .hotspot-card {
+    left: auto;
+    right: 40px;
+    transform: translateY(-50%) translateX(-20px);
+  }
+
+  .clinical-hotspot[data-side="right"]:hover .hotspot-card {
+    transform: translateY(-50%) translateX(0);
+  }
+
+  .hotspot-card-title {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: #FFF !important;
+    margin: 0 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hotspot-card-title::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #005CFF;
+    border-radius: 50%;
+  }
+
+  .hotspot-card-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #94A3B8 !important;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hotspot-card {
+      position: fixed;
+      top: auto;
+      bottom: 20px;
+      left: 20px !important;
+      right: 20px !important;
+      width: calc(100% - 40px);
+      transform: translateY(20px) !important;
+      z-index: 100;
+    }
+
+    .clinical-hotspot:hover .hotspot-card,
+    .clinical-hotspot.is-active .hotspot-card {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) !important;
+    }
+  }
+</style>
+
+<div class="clinical-breakdown-wrapper">
+  <h2 class="clinical-breakdown-title">{{ section.settings.title }}</h2>
+
+  <div class="clinical-hardware-container">
+    {% if section.settings.hardware_image != blank %}
+      <img src="{{ section.settings.hardware_image | image_url: width: 800 }}" alt="Smilu Clinical Hardware" class="clinical-hardware-img" fetchpriority="lazy">
+    {% else %}
+      <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-2_large.png?format=webp" alt="Placeholder Hardware" class="clinical-hardware-img">
+    {% endif %}
+
+    {% for block in section.blocks %}
+      {% assign side = 'left' %}
+      {% if block.settings.position_left > 50 %}
+        {% assign side = 'right' %}
+      {% endif %}
+      
+      <div class="clinical-hotspot" style="top: {{ block.settings.position_top }}%; left: {{ block.settings.position_left }}%;" data-side="{{ side }}">
+        <div class="hotspot-dot"></div>
+        <div class="hotspot-card">
+          <h3 class="hotspot-card-title">{{ block.settings.title }}</h3>
+          <p class="hotspot-card-desc">{{ block.settings.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  // Mobile interaction for hotspots
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.innerWidth <= 768) {
+      const hotspots = document.querySelectorAll('.clinical-hotspot');
+      
+      hotspots.forEach(spot => {
+        spot.addEventListener('click', (e) => {
+          // Remove active from all others
+          hotspots.forEach(s => {
+            if (s !== spot) s.classList.remove('is-active');
+          });
+          // Toggle current
+          spot.classList.toggle('is-active');
+        });
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.clinical-hotspot')) {
+          hotspots.forEach(s => s.classList.remove('is-active'));
+        }
+      });
+    }
+  });
+</script>

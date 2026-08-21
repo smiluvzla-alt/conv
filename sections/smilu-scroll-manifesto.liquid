@@ -1,0 +1,146 @@
+{% schema %}
+{
+  "name": "Smilü Scroll Manifesto",
+  "tag": "section",
+  "class": "smilu-scroll-manifesto",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "manifesto_text",
+      "label": "Texto del Manifiesto",
+      "default": "Cepillarse con plástico barato y moho es cosa del pasado. La nueva era sónica ha llegado."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Color de Fondo",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smilü Scroll Manifesto"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .scroll-manifesto-container {
+    background-color: {{ section.settings.bg_color }};
+    min-height: 200vh; /* Permite espacio para scrollear */
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 0 5%;
+  }
+
+  .scroll-manifesto-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .scroll-manifesto-text {
+    font-family: var(--font-serif, -apple-system, sans-serif);
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.15) !important; /* Texto apagado por defecto */
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3em;
+  }
+
+  .scroll-word {
+    display: inline-block;
+    background: linear-gradient(to right, #FFFFFF 50%, rgba(255, 255, 255, 0.15) 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 0.1s ease;
+  }
+</style>
+
+<div class="scroll-manifesto-container" id="manifesto-{{ section.id }}">
+  <div class="scroll-manifesto-sticky">
+    <h2 class="scroll-manifesto-text" id="text-{{ section.id }}">
+      <!-- El JS inyectará los span aquí -->
+    </h2>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const rawText = {{ section.settings.manifesto_text | json }};
+    const textContainer = document.getElementById('text-{{ section.id }}');
+    const sectionContainer = document.getElementById('manifesto-{{ section.id }}');
+    
+    // Splitting text into words
+    const words = rawText.split(' ');
+    words.forEach(word => {
+      const span = document.createElement('span');
+      span.className = 'scroll-word';
+      span.textContent = word;
+      textContainer.appendChild(span);
+    });
+
+    const wordElements = textContainer.querySelectorAll('.scroll-word');
+
+    // Scroll Observer Logic
+    window.addEventListener('scroll', () => {
+      const rect = sectionContainer.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Calculate how far we have scrolled through the section
+      // section starts when rect.top = windowHeight (bottom of screen)
+      // section ends when rect.bottom = 0 (top of screen)
+      // But for sticky text, we only care when the sticky container hits the top
+      
+      if (rect.top > 0) {
+        // We haven't reached the sticky phase yet
+        wordElements.forEach(w => w.style.backgroundPosition = '100% 0');
+        return;
+      }
+      
+      if (rect.bottom < windowHeight) {
+        // We scrolled past the sticky phase
+        wordElements.forEach(w => w.style.backgroundPosition = '0% 0');
+        return;
+      }
+
+      // We are inside the sticky phase
+      // Total scrollable distance while sticky is (rect.height - windowHeight)
+      const scrollableDistance = rect.height - windowHeight;
+      const scrolled = Math.abs(rect.top); // rect.top is negative here
+      const progress = scrolled / scrollableDistance;
+
+      // Apply progress to words
+      const totalWords = wordElements.length;
+      const wordsToHighlight = progress * totalWords;
+
+      wordElements.forEach((word, index) => {
+        if (index < Math.floor(wordsToHighlight)) {
+          word.style.backgroundPosition = '0% 0'; // fully highlighted
+        } else if (index === Math.floor(wordsToHighlight)) {
+          // partial highlight for the current word
+          const partial = (wordsToHighlight - index) * 100;
+          word.style.backgroundPosition = `${100 - partial}% 0`;
+        } else {
+          word.style.backgroundPosition = '100% 0'; // unhighlighted
+        }
+      });
+    });
+  });
+</script>
