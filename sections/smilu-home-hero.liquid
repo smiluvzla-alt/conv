@@ -13,13 +13,13 @@
       "type": "text",
       "id": "headline",
       "label": "Titular (H1)",
-      "default": "Siente la boca de cristal."
+      "default": "Destruye el mal aliento matutino."
     },
     {
       "type": "textarea",
       "id": "subheadline",
       "label": "Subtítulo",
-      "default": "Limpieza clínica inagotable que aniquila la paranoia del mal aliento matutino, construida con hardware que se niega a morir."
+      "default": "Pagar cientos de dólares por un cepillo que se corrompe por dentro en 3 meses es un robo. Smilü nace para destruir esa mentira. Despierta listo para hablar de cerca."
     },
     {
       "type": "url",
@@ -36,8 +36,6 @@
 {% endschema %}
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap');
-
   :root {
     --smilu-bg-cream: #FAF9F6;
     --smilu-blue: #0A2540;
@@ -55,7 +53,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 100px 20px;
+    padding: clamp(60px, 10vw, 100px) 20px;
     background: radial-gradient(circle at 50% 30%, #FFFFFF 0%, var(--smilu-bg-cream) 70%);
     overflow: hidden;
   }
@@ -74,29 +72,39 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: clamp(20px, 4vw, 30px);
   }
+  
+  @keyframes smiluReveal {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
   .smilu-hero-title {
     font-family: var(--font-serif) !important;
-    font-size: 5rem;
+    font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 700;
     line-height: 1.05;
     letter-spacing: -0.02em;
     color: var(--smilu-blue) !important;
-    margin-bottom: 24px;
-    opacity: 0;
+    margin-bottom: clamp(16px, 3vw, 24px);
+    animation: smiluReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+  
   .smilu-hero-subtitle {
     font-family: var(--font-sans) !important;
-    font-size: 1.125rem;
+    font-size: clamp(1rem, 2vw, 1.125rem);
     font-weight: 400;
     line-height: 1.6;
     color: #475569 !important;
-    margin-bottom: 40px;
+    margin-bottom: clamp(24px, 5vw, 40px);
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    animation: smiluReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    opacity: 0;
   }
+  
   .smilu-hero-cta {
     display: inline-flex;
     flex-direction: column;
@@ -104,7 +112,7 @@
     justify-content: center;
     background: var(--smilu-blue-vibrant, #005CFF) !important;
     color: #FFFFFF !important;
-    padding: 18px 40px;
+    padding: clamp(14px, 3vw, 18px) clamp(24px, 5vw, 40px);
     border-radius: 999px;
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
@@ -113,6 +121,9 @@
     cursor: pointer;
     width: 100%;
     max-width: 400px;
+    min-height: 60px; /* Accesibility tap target */
+    animation: smiluReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    opacity: 0;
   }
   .smilu-hero-cta:hover {
     transform: translateY(-3px);
@@ -121,7 +132,7 @@
   }
   .smilu-cta-main {
     font-weight: 900 !important;
-    font-size: 1.3rem !important;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem) !important;
     color: #FFFFFF !important;
   }
   .smilu-cta-sub {
@@ -135,20 +146,19 @@
   @media (max-width: 768px) {
     .smilu-hero-wrapper {
       min-height: 70vh;
-      padding-top: 100px;
     }
   }
 </style>
 
 <div class="smilu-hero-wrapper">
   {% if section.settings.hero_image != blank %}
-    <img src="{{ section.settings.hero_image | img_url: 'master' }}" alt="Smilu Hero" class="smilu-hero-bg" fetchpriority="high">
+    <img src="{{ section.settings.hero_image | image_url: width: 1440 }}" srcset="{{ section.settings.hero_image | image_url: width: 800 }} 800w, {{ section.settings.hero_image | image_url: width: 1440 }} 1440w, {{ section.settings.hero_image | image_url: width: 2000 }} 2000w" sizes="100vw" alt="{{ section.settings.hero_image.alt | escape }}" class="smilu-hero-bg" fetchpriority="high" loading="eager" width="{{ section.settings.hero_image.width }}" height="{{ section.settings.hero_image.height }}">
   {% else %}
-    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-lifestyle-1_large.png?format=webp" alt="Placeholder" class="smilu-hero-bg" fetchpriority="high">
+    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-lifestyle-1_large.png?format=webp" alt="Placeholder" class="smilu-hero-bg" fetchpriority="high" loading="eager" width="1440" height="960">
   {% endif %}
 
   <div class="smilu-hero-content">
-    <div style="margin-bottom: 20px;">
+    <div style="margin-bottom: clamp(10px, 3vw, 20px);">
       <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#050505" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         <path d="M12 8v4" stroke="#00D4FF"/>
@@ -159,7 +169,7 @@
     <p class="smilu-hero-subtitle">{{ section.settings.subheadline }}</p>
     
     <a href="{{ section.settings.cta_link | default: '#pitch' }}" class="smilu-hero-cta">
-      <span class="smilu-cta-main">Recuperar mi Confianza 🚀</span>
+      <span class="smilu-cta-main">¡Consigue tu Smilü! Ü</span>
       <span class="smilu-cta-sub">ANTES DE QUE SE AGOTEN LAS UNIDADES 🔥</span>
     </a>
   </div>
@@ -167,19 +177,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // 1. Text Mask Reveal Effect (Awwwards Style)
-    const h1 = document.querySelector('.smilu-hero-title');
-    if (h1) {
-      h1.style.opacity = '0';
-      h1.style.transform = 'translateY(40px)';
-      h1.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-      setTimeout(() => {
-        h1.style.opacity = '1';
-        h1.style.transform = 'translateY(0)';
-      }, 100);
-    }
-
-    // 2. Magnetic Pull Button
+    // Magnetic Pull Button (Optional interaction, no longer blocks rendering)
     const btn = document.querySelector('.smilu-hero-cta');
     if (btn) {
       btn.addEventListener('mousemove', (e) => {
