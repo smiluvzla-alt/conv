@@ -1,0 +1,181 @@
+{% schema %}
+{
+  "name": "IM8 UGC Social Proof",
+  "tag": "section",
+  "class": "smilu-im8-ugc",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "No creas en nosotros. Cree en ellos."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ugc_review",
+      "name": "Review UGC",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nombre del Cliente",
+          "default": "María F."
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Reseña",
+          "default": "Pasar de un cepillo normal a este es como cambiar de bicicleta a un Ferrari. Nunca sentí mis dientes tan limpios."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IM8 UGC Social Proof"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .im8-ugc-wrapper {
+    background: #F8FAFC; /* Light Grey Surface */
+    padding: 100px 5%;
+    overflow: hidden;
+  }
+
+  .im8-ugc-title {
+    font-family: var(--font-family, -apple-system, sans-serif) !important;
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+    font-weight: 900 !important;
+    color: #0B2033 !important;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: -0.02em !important;
+  }
+
+  /* Marquee Animation */
+  .im8-ugc-marquee {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: scrollUGC 40s linear infinite;
+  }
+
+  .im8-ugc-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scrollUGC {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .im8-ugc-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    border-radius: 20px;
+    width: 320px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .im8-ugc-stars {
+    display: flex;
+    gap: 4px;
+  }
+
+  .im8-ugc-stars svg {
+    width: 20px;
+    height: 20px;
+    fill: #00B67A; /* Trustpilot Green */
+  }
+
+  .im8-ugc-text {
+    font-size: 1rem !important;
+    color: #475569 !important;
+    line-height: 1.5;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .im8-ugc-author {
+    font-weight: 800;
+    color: #0B2033 !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  .im8-ugc-verified {
+    color: #00B67A;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>
+
+<div class="im8-ugc-wrapper">
+  <h2 class="im8-ugc-title">{{ section.settings.title }}</h2>
+  
+  <div class="im8-ugc-marquee">
+    <!-- Duplicate content for seamless scrolling -->
+    {% assign iterations = "1,2" | split: "," %}
+    {% for iter in iterations %}
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div class="im8-ugc-card">
+            <div class="im8-ugc-stars">
+              {% for i in (1..5) %}
+                <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              {% endfor %}
+            </div>
+            <p class="im8-ugc-text">"{{ block.settings.review_text }}"</p>
+            <div class="im8-ugc-author">
+              {{ block.settings.name }}
+              <span class="im8-ugc-verified">✓ Verificado</span>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <!-- Defaults -->
+        <div class="im8-ugc-card">
+          <div class="im8-ugc-stars">
+            {% for i in (1..5) %}<svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>{% endfor %}
+          </div>
+          <p class="im8-ugc-text">"Nunca había sentido mis dientes tan limpios. Literalmente boté mi cepillo manual a la basura."</p>
+          <div class="im8-ugc-author">Carlos M. <span class="im8-ugc-verified">✓ Verificado</span></div>
+        </div>
+        <div class="im8-ugc-card">
+          <div class="im8-ugc-stars">
+            {% for i in (1..5) %}<svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>{% endfor %}
+          </div>
+          <p class="im8-ugc-text">"El dolor de encías desapareció. Sientes cómo el motor hace todo el trabajo sin lastimar."</p>
+          <div class="im8-ugc-author">Andrea V. <span class="im8-ugc-verified">✓ Verificado</span></div>
+        </div>
+        <div class="im8-ugc-card">
+          <div class="im8-ugc-stars">
+            {% for i in (1..5) %}<svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>{% endfor %}
+          </div>
+          <p class="im8-ugc-text">"Pagué $250 por otra marca y se rompió. Smilü V1 cuesta la mitad y se siente el doble de premium."</p>
+          <div class="im8-ugc-author">Roberto S. <span class="im8-ugc-verified">✓ Verificado</span></div>
+        </div>
+        <div class="im8-ugc-card">
+          <div class="im8-ugc-stars">
+            {% for i in (1..5) %}<svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>{% endfor %}
+          </div>
+          <p class="im8-ugc-text">"Lo mejor es no tener que cargarlo todos los meses. Llevo 3 meses y la batería sigue intacta."</p>
+          <div class="im8-ugc-author">Diana G. <span class="im8-ugc-verified">✓ Verificado</span></div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,212 @@
+{% schema %}
+{
+  "name": "IM8 FAQ (Blue Contrast)",
+  "tag": "section",
+  "class": "smilu-im8-faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "FAQ Title",
+      "default": "Respuestas Clínicas"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Pregunta",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pregunta",
+          "default": "¿Por qué cuesta más que un cepillo común?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Respuesta",
+          "default": "Porque no es un cepillo común. Es un motor de levitación magnética..."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IM8 FAQ (Blue Contrast)"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  :root {
+    --sm-brand-blue: #005CFF; /* Vibrant Smilu Blue */
+    --sm-faq-text: #FFFFFF;
+  }
+
+  .im8-faq-wrapper {
+    background-color: var(--sm-brand-blue) !important;
+    padding: 100px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .im8-faq-title {
+    font-family: var(--font-family, -apple-system, sans-serif) !important;
+    font-size: clamp(2.5rem, 5vw, 4rem) !important;
+    font-weight: 900 !important;
+    color: var(--sm-faq-text) !important;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: -0.03em !important;
+  }
+
+  .im8-faq-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .im8-faq-item {
+    background: #FFFFFF;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .im8-faq-header {
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #FFFFFF;
+  }
+
+  .im8-faq-question {
+    font-family: var(--font-family, -apple-system, sans-serif) !important;
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    color: #0B2033 !important;
+    margin: 0;
+  }
+
+  .im8-faq-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+
+  .im8-faq-icon::before,
+  .im8-faq-icon::after {
+    content: '';
+    position: absolute;
+    background-color: #00C2FF; /* Cyan Accent */
+    transition: transform 0.3s ease;
+  }
+
+  .im8-faq-icon::before {
+    top: 11px;
+    left: 0;
+    width: 24px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .im8-faq-icon::after {
+    top: 0;
+    left: 10.5px;
+    width: 3px;
+    height: 24px;
+    border-radius: 2px;
+  }
+
+  .im8-faq-item.is-open .im8-faq-icon::after {
+    transform: rotate(90deg);
+  }
+
+  .im8-faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: #F8FAFC;
+  }
+
+  .im8-faq-answer {
+    padding: 0 32px 32px;
+    font-size: 1rem !important;
+    color: #475569 !important;
+    line-height: 1.6;
+    margin: 0;
+  }
+</style>
+
+<div class="im8-faq-wrapper">
+  <h2 class="im8-faq-title">{{ section.settings.title }}</h2>
+  <div class="im8-faq-container">
+    {% for block in section.blocks %}
+      <div class="im8-faq-item" {{ block.shopify_attributes }}>
+        <div class="im8-faq-header js-faq-toggle">
+          <h3 class="im8-faq-question">{{ block.settings.question }}</h3>
+          <div class="im8-faq-icon"></div>
+        </div>
+        <div class="im8-faq-content">
+          <p class="im8-faq-answer">{{ block.settings.answer }}</p>
+        </div>
+      </div>
+    {% else %}
+      <!-- Default placeholders if no blocks are added -->
+      <div class="im8-faq-item">
+        <div class="im8-faq-header js-faq-toggle">
+          <h3 class="im8-faq-question">¿Por qué cuesta más que un cepillo común?</h3>
+          <div class="im8-faq-icon"></div>
+        </div>
+        <div class="im8-faq-content">
+          <p class="im8-faq-answer">Porque no es un cepillo común. Su motor sónico genera vibraciones clínicas precisas que destruyen la placa sin irritar tus encías, algo que el plástico genérico no puede lograr.</p>
+        </div>
+      </div>
+      <div class="im8-faq-item">
+        <div class="im8-faq-header js-faq-toggle">
+          <h3 class="im8-faq-question">¿Tienen garantía?</h3>
+          <div class="im8-faq-icon"></div>
+        </div>
+        <div class="im8-faq-content">
+          <p class="im8-faq-answer">Sí. Ofrecemos 30 días de garantía clínica. Si no notas una mejora drástica en la limpieza de tus dientes, te devolvemos el dinero.</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqHeaders = document.querySelectorAll('.js-faq-toggle');
+
+    faqHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.closest('.im8-faq-item');
+        const content = item.querySelector('.im8-faq-content');
+        
+        // Toggle current
+        const isOpen = item.classList.contains('is-open');
+        
+        // Close all
+        document.querySelectorAll('.im8-faq-item').forEach(i => {
+          i.classList.remove('is-open');
+          i.querySelector('.im8-faq-content').style.maxHeight = null;
+        });
+
+        // Open if it wasn't open
+        if (!isOpen) {
+          item.classList.add('is-open');
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+  });
+</script>
