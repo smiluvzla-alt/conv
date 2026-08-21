@@ -191,7 +191,7 @@
           "minHeight": 75,
           "borderRadius": 0,
           "shadow": false,
-          "menuLinks": "",
+          "menuLinks": "main-menu",
           "megamenu": true,
           "logoWidth": 240,
           "logoHeight": 0,
