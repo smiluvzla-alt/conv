@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "smilu-irrigador-salespage",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
