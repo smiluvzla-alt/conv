@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "smilu-tongue-salespage",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

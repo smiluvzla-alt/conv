@@ -1,0 +1,319 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign price = current_variant.price | money_without_trailing_zeros -%}
+{%- assign compare_at_price = current_variant.compare_at_price | money_without_trailing_zeros -%}
+
+<style>
+  :root {
+    --ts-navy: #0A2540;
+    --ts-blue: #005CFF;
+    --ts-green: #00C97B;
+    --ts-white: #FFFFFF;
+    --ts-gray: #F4F5F7;
+    --ts-dark-gray: #1E293B;
+  }
+  
+  .smilu-ts-wrap {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ts-dark-gray);
+    background: var(--ts-white);
+  }
+
+  .smilu-ts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* HERO */
+  .smilu-ts-hero {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    gap: 32px;
+  }
+  @media (min-width: 990px) {
+    .smilu-ts-hero {
+      flex-direction: row;
+      align-items: center;
+      padding: 80px 0;
+      gap: 64px;
+    }
+  }
+
+  .smilu-ts-hero-img-wrap {
+    flex: 1;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--ts-gray);
+    aspect-ratio: 4/5;
+    position: relative;
+  }
+  .smilu-ts-hero-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  .smilu-ts-hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .smilu-ts-pretitle {
+    color: var(--ts-blue);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .smilu-ts-title {
+    font-size: 32px;
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--ts-navy);
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 990px) {
+    .smilu-ts-title { font-size: 48px; }
+  }
+
+  .smilu-ts-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 8px 0;
+  }
+  .smilu-ts-badge {
+    background: var(--ts-gray);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ts-navy);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .smilu-ts-price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .smilu-ts-price {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--ts-navy);
+  }
+  .smilu-ts-compare-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #94A3B8;
+    text-decoration: line-through;
+  }
+
+  /* MercadoPago Standard (Rule 35) */
+  .smilu-mp-slim {
+    background: linear-gradient(135deg, #009EE3 0%, #0060A2 100%);
+    border-radius: 14px;
+    padding: 12px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .smilu-mp-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .smilu-mp-text {
+    color: #FFFFFF !important;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .smilu-ts-btn {
+    background: var(--ts-green);
+    color: var(--ts-white) !important;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+    border-radius: 16px;
+    display: block;
+    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .smilu-ts-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,201,123,0.3);
+  }
+
+  /* VALUE STACK */
+  .smilu-ts-stack {
+    background: var(--ts-navy);
+    color: var(--ts-white);
+    padding: 60px 0;
+  }
+  .smilu-ts-stack-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 990px) {
+    .smilu-ts-stack-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  .smilu-ts-stack-img {
+    border-radius: 24px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  .smilu-ts-feature {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .smilu-ts-feature-icon {
+    font-size: 24px;
+    background: rgba(255,255,255,0.1);
+    width: 48px; height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  .smilu-ts-feature-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: var(--ts-white);
+  }
+  .smilu-ts-feature-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+</style>
+
+<div class="smilu-ts-wrap">
+  
+  <section class="smilu-ts-container">
+    <div class="smilu-ts-hero">
+      <div class="smilu-ts-hero-img-wrap">
+        <img src="{{ 'tongue_hero.webp' | asset_url }}" alt="Limpiador de Lengua Smilu" loading="eager" fetchpriority="high">
+      </div>
+      <div class="smilu-ts-hero-content">
+        <span class="smilu-ts-pretitle">El fin de la halitosis</span>
+        <h1 class="smilu-ts-title">Limpiador de Lengua Quirúrgico® — Destruye el mal aliento con acero inoxidable puro e indestructible.</h1>
+        
+        <div class="smilu-ts-badges">
+          <div class="smilu-ts-badge">✨ 100% Acero Médico</div>
+          <div class="smilu-ts-badge">🦠 Anti-Hongos</div>
+          <div class="smilu-ts-badge">🛡️ Uso Infinito</div>
+        </div>
+
+        <div class="smilu-ts-price-wrap">
+          {% if current_variant %}
+            <span class="smilu-ts-price">{{ price }}</span>
+            {% if compare_at_price %}
+              <span class="smilu-ts-compare-price">{{ compare_at_price }}</span>
+            {% endif %}
+          {% else %}
+            <span class="smilu-ts-price">$6.990</span>
+            <span class="smilu-ts-compare-price">$12.990</span>
+          {% endif %}
+        </div>
+
+        <div class="smilu-mp-slim">
+          <div class="smilu-mp-logo-row">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.5 9.6C14.5 8.37 15.36 7.34 16.51 7.07V5.2H2.7V7.07C3.85 7.34 4.7 8.37 4.7 9.6C4.7 10.83 3.85 11.86 2.7 12.13V14.08H16.51V12.13C15.36 11.86 14.5 10.83 14.5 9.6Z" fill="#fff"/></svg>
+            <span class="smilu-mp-text">MercadoPago Protegido</span>
+          </div>
+          <div class="smilu-mp-text">HASTA 6 CUOTAS SIN INTERÉS</div>
+        </div>
+
+        <form method="post" action="/cart/add" style="margin:0;">
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+          <button type="submit" class="smilu-ts-btn">Asegurar mi Limpiador de Lengua →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="smilu-ts-stack">
+    <div class="smilu-ts-container">
+      <div class="smilu-ts-stack-grid">
+        
+        <div>
+          <h2 style="font-size:32px; font-weight:800; margin:0 0 32px 0;">¿Por qué el cepillo no funciona?</h2>
+          
+          <div class="smilu-ts-feature">
+            <div class="smilu-ts-feature-icon">👅</div>
+            <div>
+              <h3 class="smilu-ts-feature-title">El 90% del mal aliento está en tu lengua</h3>
+              <p class="smilu-ts-feature-desc">Las bacterias anaerobias se esconden en las grietas de la lengua creando esa capa blanca que causa el mal olor.</p>
+            </div>
+          </div>
+
+          <div class="smilu-ts-feature">
+            <div class="smilu-ts-feature-icon">🪥</div>
+            <div>
+              <h3 class="smilu-ts-feature-title">El cepillo solo esparce la suciedad</h3>
+              <p class="smilu-ts-feature-desc">Las cerdas del cepillo de dientes están diseñadas para superficies lisas, no para la textura porosa de la lengua. Solo mueves las bacterias de lugar.</p>
+            </div>
+          </div>
+
+          <div class="smilu-ts-feature">
+            <div class="smilu-ts-feature-icon">⚕️</div>
+            <div>
+              <h3 class="smilu-ts-feature-title">Acero Quirúrgico vs Plástico</h3>
+              <p class="smilu-ts-feature-desc">Los limpiadores de plástico se llenan de micro-cortes donde crecen hongos. El acero inoxidable Smilu es liso, esterilizable y dura toda la vida.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <img src="{{ 'tongue_material.webp' | asset_url }}" alt="Acero Quirúrgico" class="smilu-ts-stack-img" loading="lazy">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Tongue Scraper Salespage",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Tongue Scraper Salespage"
+    }
+  ]
+}
+{% endschema %}
