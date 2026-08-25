@@ -423,8 +423,20 @@
      MÓDULO 2: EXPOSICIÓN DEL ENEMIGO COMÚN
      ============================================= */
   .smilu-irr-enemy {
-    background: var(--smilu-irr-navy);
-    padding: 100px 0;
+    background: url("{{ 'irr_enemy.webp' | asset_url }}") center center / cover no-repeat;
+    position: relative;
+    padding: 120px 0;
+  }
+  .smilu-irr-enemy::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(11, 32, 51, 0.85); /* Dark Navy overlay */
+    z-index: 1;
+  }
+  .smilu-irr-enemy > .smilu-irr-container {
+    position: relative;
+    z-index: 2;
   }
 
   .smilu-irr-enemy-pretitle {
@@ -1136,9 +1148,13 @@
               width="800"
             >
           {%- else -%}
-            <div class="smilu-irr-hero-placeholder">
-              <span class="smilu-irr-hero-placeholder-icon">🦷</span>
-            </div>
+            <img
+              src="{{ 'irr_hero.webp' | asset_url }}"
+              alt="{{ section.settings.hero_title }}"
+              class="smilu-irr-product-img"
+              loading="eager"
+              fetchpriority="high"
+            >
           {%- endif -%}
         </div>
 
@@ -1311,9 +1327,9 @@
           </ul>
         </div>
 
-        <div class="smilu-irr-visual-card navy-grad">
-          <span class="smilu-irr-visual-emoji">✨</span>
-          <div class="smilu-irr-stat-pill">
+        <div class="smilu-irr-visual-card">
+          <img src="{{ 'irr_sol1_dignity.webp' | asset_url }}" alt="Dignidad y Estética" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;" loading="lazy">
+          <div class="smilu-irr-stat-pill" style="position:relative; z-index:1;">
             <span class="smilu-irr-stat-number">360°</span>
             <span class="smilu-irr-stat-label">Cobertura de limpieza<br>en cada espacio interdental</span>
           </div>
@@ -1355,9 +1371,9 @@
           </ul>
         </div>
 
-        <div class="smilu-irr-visual-card cream-grad">
-          <span class="smilu-irr-visual-emoji">🦷</span>
-          <div class="smilu-irr-stat-pill dark-bg">
+        <div class="smilu-irr-visual-card">
+          <img src="{{ 'irr_sol2_health.webp' | asset_url }}" alt="Salud Clínica" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;" loading="lazy">
+          <div class="smilu-irr-stat-pill dark-bg" style="position:relative; z-index:1;">
             <span class="smilu-irr-stat-number dark">94%</span>
             <span class="smilu-irr-stat-label dark">De la placa bacteriana<br>vive entre los dientes</span>
           </div>
@@ -1394,9 +1410,9 @@
           </ul>
         </div>
 
-        <div class="smilu-irr-visual-card navy-grad" style="background: linear-gradient(145deg, #112B4A 0%, #1a3f6a 100%);">
-          <span class="smilu-irr-visual-emoji">😁</span>
-          <div class="smilu-irr-stat-pill">
+        <div class="smilu-irr-visual-card">
+          <img src="{{ 'irr_sol3_breath.webp' | asset_url }}" alt="Aliento Fresco" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;" loading="lazy">
+          <div class="smilu-irr-stat-pill" style="position:relative; z-index:1;">
             <span class="smilu-irr-stat-number">7 días</span>
             <span class="smilu-irr-stat-label">Para que tu dentista<br>note la diferencia</span>
           </div>
@@ -1437,9 +1453,9 @@
           </ul>
         </div>
 
-        <div class="smilu-irr-visual-card cream-grad">
-          <span class="smilu-irr-visual-emoji">💧</span>
-          <div class="smilu-irr-stat-pill dark-bg">
+        <div class="smilu-irr-visual-card">
+          <img src="{{ 'irr_sol4_friction.webp' | asset_url }}" alt="Fricción Cero" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;" loading="lazy">
+          <div class="smilu-irr-stat-pill dark-bg" style="position:relative; z-index:1;">
             <span class="smilu-irr-stat-number dark">30 días</span>
             <span class="smilu-irr-stat-label dark">De batería por<br>una sola carga USB-C</span>
           </div>
