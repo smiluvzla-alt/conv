@@ -31,7 +31,7 @@
   }
 
   .im8-manifesto-wrapper {
-    background-color: var(--sm-im8-bg-darkest);
+    background: url("{{ 'smilu_lifestyle.webp' | asset_url }}") center center / cover no-repeat;
     padding: 180px 24px;
     display: flex;
     justify-content: center;
@@ -41,21 +41,30 @@
     overflow: hidden;
   }
 
+  .im8-manifesto-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(11, 32, 51, 0.65); /* Dark Navy overlay for contrast */
+    z-index: 1;
+  }
+
   /* Aggressive radial glow to create focus */
   .im8-manifesto-glow {
     position: absolute;
     width: 60vw;
     height: 60vw;
-    background: radial-gradient(circle, rgba(0, 194, 255, 0.08) 0%, rgba(255,255,255,0) 70%);
+    background: radial-gradient(circle, rgba(0, 194, 255, 0.15) 0%, rgba(255,255,255,0) 70%);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
+    z-index: 1;
   }
 
   .im8-manifesto-content {
     max-width: 900px;
     z-index: 2;
+    position: relative;
   }
 
   .im8-manifesto-text {
@@ -64,7 +73,7 @@
     font-weight: 900 !important;
     line-height: 1.1 !important;
     letter-spacing: -0.04em !important;
-    color: #0B2033 !important;
+    color: #FFFFFF !important;
     margin: 0 0 24px 0;
   }
 
@@ -92,6 +101,7 @@
 </style>
 
 <div class="im8-manifesto-wrapper">
+  <div class="im8-manifesto-overlay"></div>
   <div class="im8-manifesto-glow"></div>
   <div class="im8-manifesto-content">
     <div class="im8-manifesto-icon-placeholder">

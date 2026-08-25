@@ -170,10 +170,7 @@
         {% if section.settings.product_image != blank %}
           <img src="{{ section.settings.product_image | image_url: width: 800 }}" class="im8-product-img" alt="Smilü Product" fetchpriority="high">
         {% else %}
-          <div class="im8-placeholder-text">
-            <span>[ PLACEHOLDER ]</span><br>
-            <span style="font-size: 0.8rem; font-weight: 400;">Inserta aquí un Render 3D transparente en formato PNG o WebP.</span>
-          </div>
+          <img src="{{ 'smilu_hero.webp' | asset_url }}" class="im8-product-img" alt="Smilü Product" fetchpriority="high">
         {% endif %}
       </div>
     </div>
