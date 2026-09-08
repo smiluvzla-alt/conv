@@ -19,11 +19,23 @@
 
   .smilu-bb-title {
     font-family: var(--font-family, -apple-system, sans-serif) !important;
-    font-size: 2rem !important;
+    font-size: 1.6rem !important;
     font-weight: 900 !important;
     color: #0B2033 !important;
     margin: 0;
-    line-height: 1.1;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .smilu-bb-promise {
+    font-family: var(--font-family, -apple-system, sans-serif) !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+    margin: 6px 0 0;
+    line-height: 1.35;
+    text-wrap: pretty;
   }
 
   .smilu-bb-price {
@@ -176,7 +188,10 @@
       padding: 20px 16px;
     }
     .smilu-bb-title {
-      font-size: 1.35rem !important;
+      font-size: 1.3rem !important;
+    }
+    .smilu-bb-promise {
+      font-size: 0.875rem !important;
     }
     .smilu-bb-price {
       font-size: 2rem !important;
@@ -213,7 +228,12 @@
 
   <!-- Header -->
   <div class="smilu-buybox-header">
-    <h2 class="smilu-bb-title">{{ section.settings.bb_title | default: bb_product.title }}</h2>
+    {%- assign t_parts = bb_product.title | split: ' - ' -%}
+    <h2 class="smilu-bb-title">{{ t_parts[0] }}</h2>
+    {%- if t_parts.size > 1 -%}
+      {%- assign t_promise = bb_product.title | remove_first: t_parts[0] | remove_first: ' - ' -%}
+      <p class="smilu-bb-promise">{{ t_promise }}</p>
+    {%- endif -%}
     <div class="smilu-bb-price">
       {{ v.price | money }}
       {%- if v.compare_at_price > v.price -%}
