@@ -154,35 +154,87 @@
   .tp-text strong {
     color: #00B67A !important;
   }
+
+  .smilu-bb-compare {
+    font-size: 0.6em;
+    font-weight: 500;
+    color: #94A3B8 !important;
+    margin-left: 8px;
+  }
+
+  .smilu-dual-cta[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  #smilu-bb-form {
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .smilu-buybox-wrapper {
+      padding: 20px 16px;
+    }
+    .smilu-bb-title {
+      font-size: 1.35rem !important;
+    }
+    .smilu-bb-price {
+      font-size: 2rem !important;
+    }
+    .smilu-dual-cta {
+      padding: 16px 18px !important;
+    }
+    .tp-stars svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
 </style>
 
+{%- liquid
+  assign bb_product = section.settings.buybox_product
+  assign v = bb_product.selected_or_first_available_variant
+-%}
+
 <div class="smilu-buybox-wrapper">
-  <!-- Stock Indicator -->
-  <div class="smilu-bb-stock">
-    <div class="pulse-dot"></div>
-    <span>Solo quedan {{ 'now' | date: '%S' | modulo: 5 | plus: 3 }} unidades en oferta</span>
-  </div>
+  {%- if bb_product == blank -%}
+    <p style="padding:16px;color:#B42318;font-weight:600;">
+      Selecciona el producto del BuyBox en el editor de temas.
+    </p>
+  {%- else -%}
+
+  {%- comment -%} Stock real: solo se muestra si Shopify rastrea inventario y quedan pocas {%- endcomment -%}
+  {%- if v.inventory_management == 'shopify' and v.inventory_policy == 'deny' and v.inventory_quantity > 0 and v.inventory_quantity <= 10 -%}
+    <div class="smilu-bb-stock">
+      <div class="pulse-dot"></div>
+      <span>Solo quedan {{ v.inventory_quantity }} unidades</span>
+    </div>
+  {%- endif -%}
 
   <!-- Header -->
   <div class="smilu-buybox-header">
-    <h2 class="smilu-bb-title">Smilü V1 Pro</h2>
-    <div class="smilu-bb-price">$129.000</div>
+    <h2 class="smilu-bb-title">{{ bb_product.title }}</h2>
+    <div class="smilu-bb-price">
+      {{ v.price | money }}
+      {%- if v.compare_at_price > v.price -%}
+        <s class="smilu-bb-compare">{{ v.compare_at_price | money }}</s>
+      {%- endif -%}
+    </div>
   </div>
 
-  <!-- MercadoPago Banner -->
+  <!-- Pago -->
   <div class="smilu-mp-banner">
     <div class="smilu-mp-text">
-      Paga en 3 cuotas de <span>$43.000</span> Sin Interés
+      {{ section.settings.payment_line | default: 'Pago contra entrega en Caracas' }}
+      <span>{{ section.settings.payment_line_alt | default: 'Resto del pais: pago movil por adelantado' }}</span>
     </div>
-    <!-- Placeholder for MercadoPago Logo SVG -->
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="24" height="24" rx="4" fill="#009EE3"/>
-      <path d="M7 15V9H10C11.6569 9 13 10.3431 13 12C13 13.6569 11.6569 15 10 15H7ZM9 13H10C10.5523 13 11 12.5523 11 12C11 11.4477 10.5523 11 10 11H9V13Z" fill="white"/>
-      <path d="M14 15V9H17V10H16V14H17V15H14Z" fill="white"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00C2FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="1" y="4" width="22" height="16" rx="2"></rect>
+      <line x1="1" y1="10" x2="23" y2="10"></line>
     </svg>
   </div>
 
-  <!-- Shipping -->
+  <!-- Envio -->
   <div class="smilu-shipping-banner">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C97B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <rect x="1" y="3" width="15" height="13"></rect>
@@ -190,14 +242,25 @@
       <circle cx="5.5" cy="18.5" r="2.5"></circle>
       <circle cx="18.5" cy="18.5" r="2.5"></circle>
     </svg>
-    <span>Envío Inmediato a todo el país (Mismo Día)</span>
+    <span>{{ section.settings.shipping_line | default: 'Entrega en Caracas en 24-48h' }}</span>
   </div>
 
-  <!-- Dual-Text CTA -->
-  <button class="smilu-dual-cta">
-    <span class="cta-title">Recuperar mi Salud Dental 🎁</span>
-    <span class="cta-subtitle">Antes de que se agote la promo 🔥</span>
-  </button>
+  <!-- CTA real: agrega al carrito -->
+  {%- form 'product', bb_product, id: 'smilu-bb-form', novalidate: 'novalidate' -%}
+    <input type="hidden" name="id" value="{{ v.id }}">
+    <input type="hidden" name="quantity" value="1">
+    <button type="submit" class="smilu-dual-cta" {% unless v.available %}disabled{% endunless %}>
+      {%- if v.available -%}
+        <span class="cta-title">{{ section.settings.cta_title | default: 'Recuperar mi Salud Dental' }}</span>
+        <span class="cta-subtitle">{{ section.settings.cta_subtitle | default: 'Envio incluido - Garantia de 30 dias' }}</span>
+      {%- else -%}
+        <span class="cta-title">Agotado</span>
+        <span class="cta-subtitle">Vuelve pronto</span>
+      {%- endif -%}
+    </button>
+  {%- endform -%}
+
+  {%- endif -%}
 
   <!-- Trustpilot Integration -->
   <div class="smilu-trustpilot-box">
