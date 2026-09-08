@@ -20,6 +20,42 @@
       "type": "image_picker",
       "id": "product_image",
       "label": "Product Render 3D (Transparent PNG/WebP)"
+    },
+    {
+      "type": "product",
+      "id": "buybox_product",
+      "label": "Producto del BuyBox",
+      "info": "Obligatorio. De aqui salen el precio y el boton de agregar al carrito."
+    },
+    {
+      "type": "text",
+      "id": "payment_line",
+      "label": "Linea de pago",
+      "default": "Pago contra entrega en Caracas"
+    },
+    {
+      "type": "text",
+      "id": "payment_line_alt",
+      "label": "Linea de pago (resto del pais)",
+      "default": "Resto del pais: pago movil por adelantado"
+    },
+    {
+      "type": "text",
+      "id": "shipping_line",
+      "label": "Linea de envio",
+      "default": "Entrega en Caracas en 24-48h"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA titulo",
+      "default": "Recuperar mi Salud Dental"
+    },
+    {
+      "type": "text",
+      "id": "cta_subtitle",
+      "label": "CTA subtitulo",
+      "default": "Envio incluido - Garantia de 30 dias"
     }
   ],
   "presets": [
@@ -134,6 +170,17 @@
       height: 400px;
     }
   }
+
+  @media (max-width: 767px) {
+    .im8-hero-wrapper {
+      min-height: auto;
+      padding: 96px 16px 48px;
+    }
+    .im8-hero-grid { gap: 24px; }
+    .im8-hero-title { font-size: clamp(1.9rem, 8vw, 2.6rem) !important; }
+    .im8-hero-subtitle { font-size: 0.95rem !important; }
+    .im8-product-container { height: 220px; }
+  }
 </style>
 
 <div class="im8-hero-wrapper">
@@ -156,7 +203,7 @@
 
     <!-- Right: High-Density Buy Box -->
     <div class="im8-hero-buybox-container">
-      {% render 'smilu-im8-buybox' %}
+      {% render 'smilu-im8-buybox', section: section %}
     </div>
 
   </div>
