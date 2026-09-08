@@ -213,7 +213,7 @@
 
   <!-- Header -->
   <div class="smilu-buybox-header">
-    <h2 class="smilu-bb-title">{{ bb_product.title }}</h2>
+    <h2 class="smilu-bb-title">{{ section.settings.bb_title | default: bb_product.title }}</h2>
     <div class="smilu-bb-price">
       {{ v.price | money }}
       {%- if v.compare_at_price > v.price -%}
